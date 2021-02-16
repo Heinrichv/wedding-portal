@@ -1,1 +1,70 @@
-<p>admin works!</p>
+<div class="row mt-2 w-100 p-2">
+    <div class="col-10 w-100">
+        <ul class="nav nav-tabs w-100">
+            <li class="nav-item pointer">
+                <a class="nav-link" [class.active]="activeTab == 'guests'" aria-current="page" (click)="initGuests()">Guests</a>
+            </li>
+            <li class="nav-item pointer">
+                <a class="nav-link" [class.active]="activeTab == 'tables'" aria-current="page" (click)="initGuestTables()">Guest Tables</a>
+            </li>
+        </ul>
+        
+        <ng-container *ngIf="activeTab == 'guests'">
+            <div class="row mt-2 w-100">
+                <div class="col-12">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#manage-new-guest"> 
+                        Add New Guest
+                    </button>
+                </div>
+            </div>
+        
+            <div class="row w-100">
+                <div class="col-12">
+                    <table class="table">
+                        <thead >
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" >Email Address</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr *ngFor="let guest of guests">
+                                <th  scope="row">{{guest.guestId}}</th>
+                                <td>{{guest.fname}}</td>
+                                <td>{{guest.sname}}</td>
+                                <td>{{guest.response}}</td>
+                                <td >{{guest.email}}</td>
+                                <td><a class="text-danger pointer" (click)="removeGuest(guest.guestId)">Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </ng-container>
+        
+        
+        <ng-container *ngIf="activeTab == 'tables'">
+        
+        </ng-container>        
+    </div>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="manage-new-guest" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Guest</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-manage-guest></app-manage-guest>
+        </div>
+      </div>
+    </div>
+  </div>

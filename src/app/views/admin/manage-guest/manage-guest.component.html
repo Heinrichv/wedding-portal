@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-12">
+        <input class="form-control" autocomplete="false" placeholder="First Name" type="text" [(ngModel)]="guest.fname">
+    </div>
+
+    <div class="col-12 mt-3">
+        <input class="form-control" autocomplete="false" placeholder="Last Name" type="text" [(ngModel)]="guest.sname">
+    </div>
+    
+    <div class="col-12 mt-3">
+        <input class="form-control" autocomplete="false" placeholder="Email Address" type="email" [(ngModel)]="guest.email">
+    </div>
+    
+    <div class="col-12 mt-3">
+        <input class="form-control" autocomplete="false" placeholder="Phone Number" type="tel" [(ngModel)]="guest.phoneNumber">
+    </div>
+
+    <div >
+        <div class="col-12 mt-3 form-check">
+            <input class="form-check-input" id="hasPlusOne"type="checkbox" [(ngModel)]="guest.hasPlusOne">
+            <label class="form-check-label" for="hasPlusOne">
+                Has Plus One
+            </label>
+        </div>
+    
+        <div class="col-12 mt-3 form-check">
+            <input class="form-check-input" id="inviteSent" type="checkbox" [(ngModel)]="guest.InviteSent">
+            <label class="form-check-label" for="inviteSent">
+                Invite Sent
+            </label>
+        </div>
+    </div>
+    <div class="col-12 mt-3">
+        <button class="btn btn-outline-secondary" (click)="save()">Save</button>
+    </div>
+</div>

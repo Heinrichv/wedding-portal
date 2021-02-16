@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
 * {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .pointer {
-    cursor: pointer !important;
+  cursor: pointer !important;
+}
+
+.w-100 {
+  width: 100% !important;
 }

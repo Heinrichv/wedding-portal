@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -13,18 +14,20 @@ export class AdminLoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(readonly adminService: AdminService) {
+  constructor(readonly adminService: AdminService, readonly router: Router) {
 
   }
 
   ngOnInit(): void {
   }
 
-  login() {
+  login(): void {
     this.adminService.login(this.credentials.username, this.credentials.password).subscribe((response: any) => {
       console.log(response);
 
       window.localStorage.setItem('adminUserId', response.adminUserId);
+      this.router.navigateByUrl('/admin')
+        .then(() => window.location.reload());
     });
   }
 

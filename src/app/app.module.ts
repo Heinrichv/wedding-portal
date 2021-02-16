@@ -14,6 +14,7 @@ import { AdminComponent } from './views/admin/admin.component';
 import { AdminLoginComponent } from './views/admin/admin-login/admin-login.component';
 import { GuestService } from './services/guest.service';
 import { AdminService } from './services/admin.service';
+import { ManageGuestComponent } from './views/admin/manage-guest/manage-guest.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AdminService } from './services/admin.service';
     VenueInfoComponent,
     SuggestASongComponent,
     AdminComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    ManageGuestComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from './services/admin.service';
 
 @Component({
@@ -8,13 +9,17 @@ import { AdminService } from './services/admin.service';
 })
 export class AppComponent implements OnInit {
 
-
+  constructor(readonly router: Router) {
+  }
+  adminId: any;
 
   ngOnInit(): void {
-
+    this.adminId = window.localStorage.getItem('adminUserId');
   }
 
-  adminLogin() {
-
+  logout() {
+    window.localStorage.removeItem('adminUserId');
+    this.router.navigateByUrl('home')
+      .then(() => window.location.reload());
   }
 }

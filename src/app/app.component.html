@@ -1,7 +1,6 @@
-<div>
 
   <!-- NAV START-->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light w-100">
     <div class="container-fluid">
       <a class="navbar-brand font-cursive" routerLink="/home">Heinrich & Daynnah's Wedding</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -15,11 +14,17 @@
           </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="d-flex nav-item">
+          <li *ngIf="!adminId" class="d-flex nav-item">
             <a class="nav-link text-secondary" routerLink="/rsvp">Guest Login</a>
           </li>
-          <li class="d-flex nav-item pointer">
-            <a class="nav-link text-secondary pointer" data-bs-toggle="modal" data-bs-target="#login">Admin</a>
+          <li *ngIf="!adminId" class="d-flex nav-item pointer">
+            <a class="nav-link text-secondary pointer" data-bs-toggle="modal" data-bs-target="#login">Admin Login</a>
+          </li>
+          <li *ngIf="adminId" class="d-flex nav-item pointer">
+            <a class="nav-link text-secondary pointer" routerLink="/admin">Admin Portal</a>
+          </li>
+          <li *ngIf="adminId" class="d-flex nav-item pointer">
+            <a class="nav-link text-danger pointer" (click)="logout()">Logout</a>
           </li>
         </ul>
       </div>
@@ -49,4 +54,3 @@
     </div>
   </div>
 
-</div>
