@@ -11,18 +11,15 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/rsvp">RSVP</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" routerLink="/venue-info">Venue Info</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/suggest-a-song">Suggest A Song</a>
           </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="d-flex nav-item">
-            <a class="nav-link text-primary" routerLink="/suggest-a-song">Login</a>
+            <a class="nav-link text-secondary" routerLink="/rsvp">Guest Login</a>
+          </li>
+          <li class="d-flex nav-item pointer">
+            <a class="nav-link text-secondary pointer" data-bs-toggle="modal" data-bs-target="#login">Admin</a>
           </li>
         </ul>
       </div>
@@ -33,5 +30,23 @@
 
   <app-wedding-date-countdown></app-wedding-date-countdown>
 
+
+
   <router-outlet></router-outlet>
+
+  <!-- Modal -->
+  <div class="modal fade" id="login" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Admin Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-admin-login></app-admin-login>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
