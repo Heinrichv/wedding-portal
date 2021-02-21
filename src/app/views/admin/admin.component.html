@@ -12,9 +12,15 @@
         <ng-container *ngIf="activeTab == 'guests'">
             <div class="row mt-2 w-100">
                 <div class="col-12">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#manage-new-guest"> 
+                    <button class="btn btn-primary mr-5" data-bs-toggle="modal" data-bs-target="#manage-new-guest"> 
                         Add New Guest
                     </button>
+                </div>
+                <div class="col-10 mt-3">
+
+                </div>
+                <div class="col-2 mt-3">
+                    <span >Guest Total: {{getGuestCount()}}</span>
                 </div>
             </div>
         
@@ -23,22 +29,39 @@
                     <table class="table">
                         <thead >
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Status</th>
-                                <th scope="col" >Email Address</th>
-                                <th scope="col"></th>
+                                <th class="text-center" scope="col">#</th>
+                                <th class="text-center" scope="col">First Name</th>
+                                <th class="text-center" scope="col">Last Name</th>
+                                <th class="text-center" scope="col">Email Address</th>
+                                <th class="text-center" scope="col">Plus One</th>
+                                <th class="text-center" scope="col">Invite Sent</th>
+                                <th class="text-center" scope="col">Status</th>
+                                <th class="text-center" scope="col"></th>
                             </tr>
                         </thead>
                         <tbody >
                             <tr *ngFor="let guest of guests">
-                                <th  scope="row">{{guest.guestId}}</th>
-                                <td>{{guest.fname}}</td>
-                                <td>{{guest.sname}}</td>
-                                <td>{{guest.response}}</td>
-                                <td >{{guest.email}}</td>
-                                <td><a class="text-danger pointer" (click)="removeGuest(guest.guestId)">Delete</a></td>
+                                <th class="text-center"  scope="row">{{guest.guestId}}</th>
+                                <td class="text-center">{{guest.fname}}</td>
+                                <td class="text-center">{{guest.sname}}</td>
+                                <td  class="text-center">{{guest.email}}</td>
+                                <td class="text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" [(ngModel)]="guest.hasPlusOne" disabled>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" [(ngModel)]="guest.InviteSent" disabled>
+                                    </div>
+                                </td>
+                                <td class="text-center"  >
+                                    <i class="bi" [class.bi-hourglass]="guest.response === 'Pending'" 
+                                        [class.bi-calendar2-x]="guest.response === 'CantMakeIt'" [class.bi-calendar2-check]="guest.response === 'Coming'"></i>
+                                </td>
+                                <td>
+                                    <a class="text-danger pointer" (click)="removeGuest(guest.guestId)">Delete</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

@@ -1,8 +1,28 @@
 .bg-img {
-    width: 100%; 
-    background-image: url('../../../assets/bellblossomchapel-crop.jpg');
-    background-position: center -140px;
-    height: 500px;
-    overflow: hidden;
-    background-size: cover;
+  position: relative;
+  width: 100%;
+  //   background-image: url('../../../assets/bell-and-blossom-wood-gate.jpg');
+  background-image: url('../../../assets/bellandblossom-gate-garden.jpg');
+  background-position: center center;
+  height: 250px;
+  overflow: hidden;
+  background-size: cover;
 }
+
+.bg-img-header {
+  position: relative;
+  width: 100%;
+  //   background-image: url('../../../assets/bell-and-blossom-wood-gate.jpg');
+  background-image: url('../../../assets/bellblossomgateclosed.jpg');
+  background-position: center center;
+  height: 90px;
+  overflow: hidden;
+  background-size: cover;
+  color: #fff;
+}
+
+.bg-img-header-text {
+  margin-top: 35px;
+}
+
+// 970×90	

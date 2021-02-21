@@ -34,4 +34,8 @@ export class AdminComponent implements OnInit {
     this.adminService.removeGuestById(id)
       .subscribe(() => this.initGuests());
   }
+
+  getGuestCount() {
+    return this.guests.length;
+  }
 }

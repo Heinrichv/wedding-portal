@@ -1,14 +1,18 @@
-.bg-img {
-    width: 100%; 
-    background-image: url('../../../assets/hero-countdown.jpg');
-    background-position: center center;
-    height: 20vh;
-    overflow: hidden;
-    background-size: cover;
+p {
+  font-family: 'Dancing Script', cursive;
 }
 
+.bg-img {
+  position: relative;
+  width: auto;
+  //   background-image: url('../../../assets/bell-and-blossom-wood-gate.jpg');
+  background-image: url('../../../assets/erol-ahmed.jpg');
+  background-position: center center;
+  height: 250px;
+  overflow: hidden;
+  background-size: cover;
+}
 
-.bg-text {
-    padding-top : 8vh;
-    font-family: 'Dancing Script', cursive;
+.bg-img-txt-group {
+  top: 50px;
 }
