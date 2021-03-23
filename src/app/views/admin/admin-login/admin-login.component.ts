@@ -12,7 +12,11 @@ export class AdminLoginComponent implements OnInit {
   credentials = {
     username: '',
     password: ''
-  }
+  };
+
+  loading = false;
+
+  errorMessage: any;
 
   constructor(readonly adminService: AdminService, readonly router: Router) {
 
@@ -22,13 +26,21 @@ export class AdminLoginComponent implements OnInit {
   }
 
   login(): void {
+    this.loading = true;
+    this.errorMessage = null;
     this.adminService.login(this.credentials.username, this.credentials.password).subscribe((response: any) => {
       console.log(response);
 
       window.localStorage.setItem('adminUserId', response.adminUserId);
       this.router.navigateByUrl('/admin')
-        .then(() => window.location.reload());
+        .then(() => {
+          this.loading = false;
+          window.location.reload();
+        });
+    }, (err) => {
+      console.log(err);
+      this.errorMessage = err.error;
+      this.loading = false;
     });
   }
-
 }

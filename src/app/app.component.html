@@ -2,7 +2,7 @@
   <!-- NAV START-->
   <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light w-100">
     <div class="container-fluid">
-      <a class="navbar-brand font-cursive" routerLink="/home">Heinrich & Daynnah's Wedding</a>
+      <a class="navbar-brand font-cursive" routerLink="/home"> Daynnah & Heinrich's Wedding</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,21 +10,27 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/venue-info">Venue Info</a>
+            <a class="nav-link" routerLink="/venue-info">our story</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/venue-info">photos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/venue-info">q&a</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/venue-info">rsvp</a>
           </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
-          <li *ngIf="!adminId" class="d-flex nav-item">
-            <a class="nav-link text-secondary" routerLink="/rsvp">Guest Login</a>
-          </li>
           <li *ngIf="!adminId" class="d-flex nav-item pointer">
-            <a class="nav-link text-secondary pointer" data-bs-toggle="modal" data-bs-target="#login">Admin Login</a>
+            <a class="nav-link text-secondary pointer" data-bs-toggle="modal" data-bs-target="#login">admin login</a>
           </li>
           <li *ngIf="adminId" class="d-flex nav-item pointer">
-            <a class="nav-link text-secondary pointer" routerLink="/admin">Admin Portal</a>
+            <a class="nav-link text-secondary pointer" routerLink="/admin">manage wedding</a>
           </li>
           <li *ngIf="adminId" class="d-flex nav-item pointer">
-            <a class="nav-link text-danger pointer" (click)="logout()">Logout</a>
+            <a class="nav-link text-danger pointer" (click)="logout()">logout</a>
           </li>
         </ul>
       </div>

@@ -4,13 +4,12 @@ p {
 
 .bg-img {
   position: relative;
-  width: auto;
-  //   background-image: url('../../../assets/bell-and-blossom-wood-gate.jpg');
-  background-image: url('../../../assets/erol-ahmed.jpg');
-  background-position: center center;
-  height: 250px;
   overflow: hidden;
   background-size: cover;
+  width: 100%;
+  background-image: url('../../../assets/bellandblossom-gate-garden.jpg');
+  background-position: center center;
+  height: 214px;
 }
 
 .bg-img-txt-group {

@@ -29,11 +29,11 @@ export class WeddingDateCountdownComponent implements OnInit {
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
-    this.countdown = days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds";
+    this.countdown = days + ' Days';
 
     // If the count down is finished, write some text
     if (distance < 0) {
-      this.countdown = 'Wedding Time!!'
+      this.countdown = 'Wedding Time!!';
     }
   }
 
