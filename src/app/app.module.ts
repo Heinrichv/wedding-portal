@@ -15,6 +15,9 @@ import { AdminLoginComponent } from './views/admin/admin-login/admin-login.compo
 import { GuestService } from './services/guest.service';
 import { AdminService } from './services/admin.service';
 import { ManageGuestComponent } from './views/admin/manage-guest/manage-guest.component';
+import { OurStoryComponent } from './views/our-story/our-story.component';
+import { QAndAComponent } from './views/q-and-a/q-and-a.component';
+import { PhotosComponent } from './views/photos/photos.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ManageGuestComponent } from './views/admin/manage-guest/manage-guest.co
     SuggestASongComponent,
     AdminComponent,
     AdminLoginComponent,
-    ManageGuestComponent
+    ManageGuestComponent,
+    OurStoryComponent,
+    QAndAComponent,
+    PhotosComponent
   ],
   imports: [
     BrowserModule,

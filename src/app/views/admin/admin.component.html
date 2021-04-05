@@ -12,7 +12,7 @@
         <ng-container *ngIf="activeTab == 'guests'">
             <div class="row mt-2 w-100">
                 <div class="col-12">
-                    <button class="btn btn-primary mr-5" data-bs-toggle="modal" data-bs-target="#manage-new-guest"> 
+                    <button class="btn btn-primary mr-5 float-end" data-bs-toggle="modal" data-bs-target="#manage-new-guest"> 
                         Add New Guest
                     </button>
                 </div>
@@ -29,40 +29,53 @@
                     <table class="table">
                         <thead >
                             <tr>
-                                <th class="text-center" scope="col">#</th>
+                                <th class="text-center" scope="col">Guest Type</th>
                                 <th class="text-center" scope="col">First Name</th>
                                 <th class="text-center" scope="col">Last Name</th>
                                 <th class="text-center" scope="col">Email Address</th>
-                                <th class="text-center" scope="col">Plus One</th>
-                                <th class="text-center" scope="col">Invite Sent</th>
-                                <th class="text-center" scope="col">Status</th>
+                                <th class="text-center" scope="col">Response Status</th>
                                 <th class="text-center" scope="col"></th>
                             </tr>
                         </thead>
                         <tbody >
-                            <tr *ngFor="let guest of guests">
-                                <th class="text-center"  scope="row">{{guest.guestId}}</th>
-                                <td class="text-center">{{guest.fname}}</td>
-                                <td class="text-center">{{guest.sname}}</td>
-                                <td  class="text-center">{{guest.email}}</td>
-                                <td class="text-center">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" [(ngModel)]="guest.hasPlusOne" disabled>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" [(ngModel)]="guest.InviteSent" disabled>
-                                    </div>
-                                </td>
-                                <td class="text-center"  >
-                                    <i class="bi" [class.bi-hourglass]="guest.response === 'Pending'" 
-                                        [class.bi-calendar2-x]="guest.response === 'CantMakeIt'" [class.bi-calendar2-check]="guest.response === 'Coming'"></i>
-                                </td>
-                                <td>
-                                    <a class="text-danger pointer" (click)="removeGuest(guest.guestId)">Delete</a>
-                                </td>
-                            </tr>
+                            <ng-container *ngFor="let guest of guests;let guestIndex=index;">
+                                <tr>
+                                    <th class="text-center"  scope="row">
+                                        <i class="bi bi-person-bounding-box"></i>
+                                    </th>
+                                    <td class="text-center">{{guest.fname}}</td>
+                                    <td class="text-center">{{guest.sname}}</td>
+                                    <td  class="text-center">{{guest.email}}</td>
+                                    <td class="text-center"  >
+                                        <i class="bi" [class.bi-hourglass]="guest.response === 'Pending'" 
+                                            [class.bi-calendar2-x]="guest.response === 'CantMakeIt'" [class.bi-calendar2-check]="guest.response === 'Coming'"></i>
+                                    </td>
+                                    <td>
+                                        <a class="text-danger pointer" (click)="removeGuest(guest.guestId)">Remove</a>
+                                    </td>
+                                </tr>
+
+                                <ng-container *ngIf="guest.guestParties">
+                                    <tr *ngFor="let guestParty of guest.guestParties;let guestPartyIndex=index;">
+                                        <th class="text-center"  scope="row">
+                                            <i class="bi bi-person"></i>
+                                        </th>
+                                        <td class="text-center">{{guestParty.fname}}</td>
+                                        <td class="text-center">{{guestParty.sname}}</td>
+                                        <td  class="text-center"></td>
+                                        <td class="text-center"  >
+                                            <i class="bi" [class.bi-hourglass]="guestParty.response === 'Pending'" 
+                                                [class.bi-calendar2-x]="guestParty.response === 'CantMakeIt'" [class.bi-calendar2-check]="guestParty.response === 'Coming'"></i>
+                                        </td>
+                                        <td>
+                                            <a class="text-danger pointer" (click)="removeGuestParty(guestParty.guestPartyId)">Remove</a>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                
+                            </ng-container>
+                            
+                            
                         </tbody>
                     </table>
                 </div>

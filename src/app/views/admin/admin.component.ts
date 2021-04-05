@@ -35,7 +35,18 @@ export class AdminComponent implements OnInit {
       .subscribe(() => this.initGuests());
   }
 
-  getGuestCount() {
-    return this.guests.length;
+  removeGuestParty(id: any): void {
+    this.adminService.removeGuestParty(id)
+      .subscribe(() => this.initGuests());
+  }
+
+  getGuestCount(): number {
+    const guestParties = this.guests
+      .map(x => x.guestParties.length)
+      .reduce((a, b) => {
+        return a + b;
+      }, 0);
+
+    return this.guests.length + guestParties;
   }
 }

@@ -34,6 +34,10 @@ export class AdminService {
     return this.http.delete(`${environment.api.url}/api/admin/guest/${id}/`);
   }
 
+  removeGuestParty(id: any): Observable<any> {
+    return this.http.delete(`${environment.api.url}/api/admin/guest/party/${id}/`);
+  }
+
   guestLogin(firstname: string, surname: string): Observable<any> {
     return this.http.post(`${environment.api.url}/api/guest/login/`, null, {
       headers: {

@@ -9,16 +9,17 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class ManageGuestComponent implements OnInit {
 
-  guest = {
+  guest: any = {
     guestId: 0,
     fname: '',
     sname: '',
     email: '',
     phoneNumber: '',
     hasPlusOne: false,
-    InviteSent: false,
+    inviteSent: false,
     response: 0,
-    adminUserId: window.localStorage.getItem('adminUserId')
+    adminUserId: Number(window.localStorage.getItem('adminUserId')),
+    guestParties: []
   };
 
   constructor(readonly adminService: AdminService, readonly router: Router) { }
@@ -26,7 +27,19 @@ export class ManageGuestComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save() {
+  save(): void {
     this.adminService.addGuest(this.guest).subscribe((response: any) => window.location.reload());
+  }
+
+  addGuestParty(): void {
+    this.guest.guestParties.push({
+      fname: '',
+      sname: '',
+      response: 0
+    });
+  }
+
+  removeGuestParty(): void {
+
   }
 }

@@ -1,36 +1,39 @@
 <div class="row">
     <div class="col-12">
+        <p>Main Guest</p>
+    </div>
+    <div class="col-6">
         <input class="form-control" autocomplete="false" placeholder="First Name" type="text" [(ngModel)]="guest.fname">
     </div>
-
-    <div class="col-12 mt-3">
+    <div class="col-6">
         <input class="form-control" autocomplete="false" placeholder="Last Name" type="text" [(ngModel)]="guest.sname">
     </div>
     
-    <div class="col-12 mt-3">
+    <div class="col-6 mt-2">
         <input class="form-control" autocomplete="false" placeholder="Email Address" type="email" [(ngModel)]="guest.email">
     </div>
     
-    <div class="col-12 mt-3">
+    <div class="col-6 mt-2">
         <input class="form-control" autocomplete="false" placeholder="Phone Number" type="tel" [(ngModel)]="guest.phoneNumber">
     </div>
 
-    <div >
-        <div class="col-12 mt-3 form-check">
-            <input class="form-check-input" id="hasPlusOne"type="checkbox" [(ngModel)]="guest.hasPlusOne">
-            <label class="form-check-label" for="hasPlusOne">
-                Has Plus One
-            </label>
-        </div>
-    
-        <div class="col-12 mt-3 form-check">
-            <input class="form-check-input" id="inviteSent" type="checkbox" [(ngModel)]="guest.InviteSent">
-            <label class="form-check-label" for="inviteSent">
-                Invite Sent
-            </label>
-        </div>
+    <div class="col-12 mt-4">
+        <button class="btn btn-outline-secondary float-end" (click)="addGuestParty()">Add Additional Guest</button>
     </div>
-    <div class="col-12 mt-3">
-        <button class="btn btn-outline-secondary" (click)="save()">Save</button>
+
+    <ng-container *ngIf="guest.guestParties.length > 0">
+        <ng-container *ngFor="let party of guest.guestParties">
+            <div class="col-6 mt-3">
+                <input class="form-control" autocomplete="false" placeholder="Guest First Name" [(ngModel)]="party.fname">
+            </div>
+            <div class="col-6 mt-3">
+                <input class="form-control" autocomplete="false" placeholder="Guest Last Name" [(ngModel)]="party.sname">
+            </div>
+        </ng-container>
+        
+    </ng-container>
+        
+    <div class="col-12 mt-4 text-center">
+        <button class="btn btn-primary" (click)="save()">Save</button>
     </div>
 </div>
