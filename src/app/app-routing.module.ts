@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './views/admin/admin.component';
 import { HomeComponent } from './views/home/home.component';
+import { RsvpRedirectComponent } from './views/rsvp/rsvp-redirect/rsvp-redirect.component';
 import { RsvpComponent } from './views/rsvp/rsvp.component';
 import { SuggestASongComponent } from './views/suggest-a-song/suggest-a-song.component';
 import { VenueInfoComponent } from './views/venue-info/venue-info.component';
@@ -17,7 +18,13 @@ const routes: Routes = [
   },
   {
     path: 'rsvp',
-    component: RsvpComponent
+    component: RsvpComponent,
+    children: [
+      {
+        path: 'redirect/:code',
+        component: RsvpRedirectComponent,
+      }
+    ]
   },
   {
     path: 'suggest-a-song',

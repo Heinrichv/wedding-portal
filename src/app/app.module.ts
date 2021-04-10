@@ -18,6 +18,7 @@ import { ManageGuestComponent } from './views/admin/manage-guest/manage-guest.co
 import { OurStoryComponent } from './views/our-story/our-story.component';
 import { QAndAComponent } from './views/q-and-a/q-and-a.component';
 import { PhotosComponent } from './views/photos/photos.component';
+import { RsvpRedirectComponent } from './views/rsvp/rsvp-redirect/rsvp-redirect.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PhotosComponent } from './views/photos/photos.component';
     ManageGuestComponent,
     OurStoryComponent,
     QAndAComponent,
-    PhotosComponent
+    PhotosComponent,
+    RsvpRedirectComponent
   ],
   imports: [
     BrowserModule,
