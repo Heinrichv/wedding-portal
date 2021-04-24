@@ -1,12 +1,13 @@
 <div class="container mt-4">
     <!-- Gallery -->
-    <div class="row">
-        <div *ngFor="let photo of photos" class="col-lg-2 col-md-4 mb-4 mb-lg-0">
+    <div class="row text-center">
+        <div *ngFor="let photo of photos" class="col-lg-4 col-md-6 mb-4 mb-lg-0 text-center">
             <img
                 [src]="photo"
-                class="w-100 shadow-1-strong rounded mb-4"
+                class="shadow-1-strong rounded mb-4"
                 alt=""
-                
+                loading="lazy"
+                height="350px"
             />
         </div>
     </div>

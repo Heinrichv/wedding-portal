@@ -26,6 +26,10 @@ export class AdminService {
     return this.http.get(`${environment.api.url}/api/admin/guest/${id}/`);
   }
 
+  getGuestByRsvpCode(code: any): Observable<any> {
+    return this.http.get(`${environment.api.url}/api/admin/guest/rsvp/${code}/`);
+  }
+
   addGuest(guest: any): Observable<any> {
     return this.http.post(`${environment.api.url}/api/admin/guest/`, guest);
   }

@@ -19,6 +19,8 @@ import { OurStoryComponent } from './views/our-story/our-story.component';
 import { QAndAComponent } from './views/q-and-a/q-and-a.component';
 import { PhotosComponent } from './views/photos/photos.component';
 import { RsvpRedirectComponent } from './views/rsvp/rsvp-redirect/rsvp-redirect.component';
+import { LazyImgDirective } from './directives/LazyImgDirective';
+import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { RsvpRedirectComponent } from './views/rsvp/rsvp-redirect/rsvp-redirect.
     OurStoryComponent,
     QAndAComponent,
     PhotosComponent,
-    RsvpRedirectComponent
+    RsvpRedirectComponent,
+    LazyImgDirective,
+    ScrollTopComponent
   ],
   imports: [
     BrowserModule,

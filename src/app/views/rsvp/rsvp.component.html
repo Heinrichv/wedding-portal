@@ -1,1 +1,23 @@
-<p>rsvp works!</p>
+
+
+<div class="container">
+    <ng-container *ngIf="!guest">
+
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p class="mt-3">Please fill in the below to find your invite</p>
+                <div class="input-group mb-3 mt-3">
+                    <input type="text" class="form-control" placeholder="First Name" autocomplete="off">
+                    <input type="text" class="form-control" placeholder="Last Name" autocomplete="off">
+                    <button class="btn btn-outline-secondary" type="button" >Find</button>
+                </div>
+            </div>
+        </div>
+
+    </ng-container>
+    
+    <ng-container *ngIf="guest">
+    
+    </ng-container>
+    
+</div>

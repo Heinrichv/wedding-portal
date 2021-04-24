@@ -9,7 +9,15 @@ export class RsvpComponent implements OnInit {
 
   constructor() { }
 
+  guest: any;
+
   ngOnInit(): void {
+
+    const rsvp = window.localStorage.getItem('rsvp');
+
+    if (rsvp) {
+      this.guest = JSON.parse(rsvp);
+    }
   }
 
 }
