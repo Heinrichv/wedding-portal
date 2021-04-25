@@ -1,5 +1,3 @@
-
-
 <div class="container">
     <ng-container *ngIf="!guest">
 
@@ -7,17 +5,29 @@
             <div class="col-lg-6 col-md-12">
                 <p class="mt-3">Please fill in the below to find your invite</p>
                 <div class="input-group mb-3 mt-3">
-                    <input type="text" class="form-control" placeholder="First Name" autocomplete="off">
-                    <input type="text" class="form-control" placeholder="Last Name" autocomplete="off">
-                    <button class="btn btn-outline-secondary" type="button" >Find</button>
+                    <input type="text" class="form-control" placeholder="First Name" autocomplete="off"
+                        [(ngModel)]="searchGuest.fname">
+                    <input type="text" class="form-control" placeholder="Last Name" autocomplete="off"
+                        [(ngModel)]="searchGuest.lname">
+                    <button class="btn btn-outline-secondary" type="button" (click)="findGuest()">Find</button>
                 </div>
             </div>
         </div>
 
     </ng-container>
-    
+
     <ng-container *ngIf="guest">
-    
+        <div class="row mt-5">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    {{guest.fname}} {{guest.sname}}
+                </li>
+
+                <li *ngFor="let guestParty of guest.guestParties" class="list-group-item">
+                    {{guestParty.fname}} {{guestParty.sname}}
+                </li>
+            </ul>
+        </div>
     </ng-container>
-    
+
 </div>

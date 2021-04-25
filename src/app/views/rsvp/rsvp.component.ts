@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-rsvp',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RsvpComponent implements OnInit {
 
-  constructor() { }
+  constructor(readonly adminService: AdminService) { }
 
+  searchGuest: any = {
+    fname: null,
+    lname: null
+  };
   guest: any;
 
   ngOnInit(): void {
@@ -18,6 +23,14 @@ export class RsvpComponent implements OnInit {
     if (rsvp) {
       this.guest = JSON.parse(rsvp);
     }
+  }
+
+  findGuest(): void {
+    this.adminService.getGuestByGuestName(this.searchGuest.fname, this.searchGuest.lname).subscribe((res: any) => {
+      this.guest = res;
+    }, (err: any) => {
+
+    });
   }
 
 }

@@ -30,6 +30,10 @@ export class AdminService {
     return this.http.get(`${environment.api.url}/api/admin/guest/rsvp/${code}/`);
   }
 
+  getGuestByGuestName(fname: any, lname: any): Observable<any> {
+    return this.http.get(`${environment.api.url}/api/admin/guest/rsvp/${fname}/${lname}`);
+  }
+
   addGuest(guest: any): Observable<any> {
     return this.http.post(`${environment.api.url}/api/admin/guest/`, guest);
   }
