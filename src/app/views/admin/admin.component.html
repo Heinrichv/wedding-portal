@@ -2,17 +2,20 @@
     <div class="col-10 w-100">
         <ul class="nav nav-tabs w-100">
             <li class="nav-item pointer">
-                <a class="nav-link" [class.active]="activeTab == 'guests'" aria-current="page" (click)="initGuests()">Guests</a>
+                <a class="nav-link" [class.active]="activeTab == 'guests'" aria-current="page"
+                    (click)="initGuests()">Guests</a>
             </li>
             <li class="nav-item pointer">
-                <a class="nav-link" [class.active]="activeTab == 'tables'" aria-current="page" (click)="initGuestTables()">Guest Tables</a>
+                <a class="nav-link" [class.active]="activeTab == 'tables'" aria-current="page"
+                    (click)="initGuestTables()">Guest Tables</a>
             </li>
         </ul>
-        
+
         <ng-container *ngIf="activeTab == 'guests'">
             <div class="row mt-2 w-100">
                 <div class="col-12">
-                    <button class="btn btn-primary mr-5 float-end" data-bs-toggle="modal" data-bs-target="#manage-new-guest"> 
+                    <button class="btn btn-primary mr-5 float-end" data-bs-toggle="modal"
+                        data-bs-target="#manage-new-guest">
                         Add New Guest
                     </button>
                 </div>
@@ -20,14 +23,14 @@
 
                 </div>
                 <div class="col-2 mt-3">
-                    <span >Guest Total: {{getGuestCount()}}</span>
+                    <span>Guest Total: {{getGuestCount()}}</span>
                 </div>
             </div>
-        
+
             <div class="row w-100">
                 <div class="col-12">
                     <table class="table">
-                        <thead >
+                        <thead>
                             <tr>
                                 <th class="text-center" scope="col">Guest Type</th>
                                 <th class="text-center" scope="col">First Name</th>
@@ -37,70 +40,82 @@
                                 <th class="text-center" scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody >
+                        <tbody>
                             <ng-container *ngFor="let guest of guests;let guestIndex=index;">
-                                <tr>
-                                    <th class="text-center"  scope="row">
+                                <tr [class.bg-danger]="guest.response === 'CantMakeIt'"
+                                    [class.bg-success]="guest.response === 'Coming'"
+                                    [class.text-white]="guest.response === 'CantMakeIt' || guest.response === 'Coming'">
+                                    <th class="text-center" scope="row">
                                         <i class="bi bi-person-bounding-box"></i>
                                     </th>
                                     <td class="text-center">{{guest.fname}}</td>
                                     <td class="text-center">{{guest.sname}}</td>
-                                    <td  class="text-center">{{guest.email}}</td>
-                                    <td class="text-center"  >
-                                        <i class="bi" [class.bi-hourglass]="guest.response === 'Pending'" 
-                                            [class.bi-calendar2-x]="guest.response === 'CantMakeIt'" [class.bi-calendar2-check]="guest.response === 'Coming'"></i>
+                                    <td class="text-center">{{guest.email}}</td>
+                                    <td class="text-center">
+                                        <i class="bi" [class.bi-hourglass]="guest.response === 'Pending'"
+                                            [class.bi-x]="guest.response === 'CantMakeIt'"
+                                            [class.bi-check]="guest.response === 'Coming'"></i>
                                     </td>
                                     <td>
-                                        <a class="text-danger pointer" (click)="removeGuest(guest.guestId)">Remove</a>
+                                        <a [class.text-white]="guest.response === 'CantMakeIt' || guest.response === 'Coming'"
+                                            [class.text-danger]="guest.response !== 'CantMakeIt'" class="pointer"
+                                            (click)="removeGuest(guest.guestId)">Remove</a>
                                     </td>
                                 </tr>
 
                                 <ng-container *ngIf="guest.guestParties">
-                                    <tr *ngFor="let guestParty of guest.guestParties;let guestPartyIndex=index;">
-                                        <th class="text-center"  scope="row">
+                                    <tr [class.bg-danger]="guestParty.response === 'CantMakeIt'"
+                                        [class.bg-success]="guestParty.response === 'Coming'"
+                                        [class.text-white]="guestParty.response === 'CantMakeIt' || guestParty.response === 'Coming'"
+                                        *ngFor="let guestParty of guest.guestParties;let guestPartyIndex=index;">
+                                        <th class="text-center" scope="row">
                                             <i class="bi bi-person"></i>
                                         </th>
                                         <td class="text-center">{{guestParty.fname}}</td>
                                         <td class="text-center">{{guestParty.sname}}</td>
-                                        <td  class="text-center"></td>
-                                        <td class="text-center"  >
-                                            <i class="bi" [class.bi-hourglass]="guestParty.response === 'Pending'" 
-                                                [class.bi-calendar2-x]="guestParty.response === 'CantMakeIt'" [class.bi-calendar2-check]="guestParty.response === 'Coming'"></i>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <i class="bi" [class.bi-hourglass]="guestParty.response === 'Pending'"
+                                                [class.bi-x]="guestParty.response === 'CantMakeIt'"
+                                                [class.bi-check]="guestParty.response === 'Coming'"></i>
                                         </td>
                                         <td>
-                                            <a class="text-danger pointer" (click)="removeGuestParty(guestParty.guestPartyId)">Remove</a>
+                                            <a [class.text-white]="guestParty.response === 'CantMakeIt' || guestParty.response === 'Coming'"
+                                                [class.text-danger]="guestParty.response !== 'CantMakeIt'"
+                                                class="text-danger pointer"
+                                                (click)="removeGuestParty(guestParty.guestPartyId)">Remove</a>
                                         </td>
                                     </tr>
                                 </ng-container>
-                                
+
                             </ng-container>
-                            
-                            
+
+
                         </tbody>
                     </table>
                 </div>
             </div>
-        
+
         </ng-container>
-        
-        
+
+
         <ng-container *ngIf="activeTab == 'tables'">
-        
-        </ng-container>        
+
+        </ng-container>
     </div>
 </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="manage-new-guest" tabindex="-1" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="manage-new-guest" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Add New Guest</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Guest</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-manage-guest></app-manage-guest>
+            </div>
         </div>
-        <div class="modal-body">
-          <app-manage-guest></app-manage-guest>
-        </div>
-      </div>
     </div>
-  </div>
+</div>

@@ -54,4 +54,19 @@ export class AdminService {
     });
   }
 
+  rsvpGuest(guestId: any, status: any): Observable<any> {
+    return this.http.post(`${environment.api.url}/api/admin/guest/rsvp/${guestId}/${status}`, null);
+  }
+
+  rsvpGuestParty(GuestPartyId: any, status: any): Observable<any> {
+    return this.http.post(`${environment.api.url}/api/admin/guestparty/rsvp/${GuestPartyId}/${status}`, null);
+  }
+
+  suggestSong(guestId: any, song: any): Observable<any> {
+    return this.http.post(`${environment.api.url}/api/admin/guest/songsuggestion/${guestId}`, song);
+  }
+
+  removeSuggestedSong(id: any): Observable<any> {
+    return this.http.delete(`${environment.api.url}/api/admin/guest/songsuggestion/${id}`);
+  }
 }

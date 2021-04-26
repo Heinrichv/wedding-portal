@@ -21,6 +21,7 @@ import { PhotosComponent } from './views/photos/photos.component';
 import { RsvpRedirectComponent } from './views/rsvp/rsvp-redirect/rsvp-redirect.component';
 import { LazyImgDirective } from './directives/LazyImgDirective';
 import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+import { YoutubeService } from './services/youtube.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { ScrollTopComponent } from './components/scroll-top/scroll-top.component
     FormsModule,
     HttpClientModule
   ],
-  providers: [GuestService, AdminService],
+  providers: [GuestService, AdminService, YoutubeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

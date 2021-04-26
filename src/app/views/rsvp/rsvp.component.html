@@ -1,6 +1,5 @@
-<div class="container">
-    <ng-container *ngIf="!guest">
-
+<div class="container mb-5">
+    <ng-container *ngIf="!guest && !loading">
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <p class="mt-3">Please fill in the below to find your invite</p>
@@ -9,25 +8,142 @@
                         [(ngModel)]="searchGuest.fname">
                     <input type="text" class="form-control" placeholder="Last Name" autocomplete="off"
                         [(ngModel)]="searchGuest.lname">
-                    <button class="btn btn-outline-secondary" type="button" (click)="findGuest()">Find</button>
+                    <button class="btn btn-outline-secondary" type="button" (click)="findGuest()">
+                        Find
+                    </button>
                 </div>
             </div>
         </div>
-
     </ng-container>
 
-    <ng-container *ngIf="guest">
-        <div class="row mt-5">
+    <ng-container *ngIf="guest && !loading">
+
+        <div class="row mt-3">
             <ul class="list-group">
-                <li class="list-group-item">
-                    {{guest.fname}} {{guest.sname}}
+                <li class="d-flex justify-content-between list-group-item w-100">
+                    <div class="mt-2">
+                        Guest List RSVP
+                    </div>
+                    <div>
+                        <div class="btn-group" style="min-width: 98px;" role="group">
+                            <button (click)="logout()" class="btn btn-danger">Logout</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="d-flex justify-content-between list-group-item w-100">
+                    <div class="mt-2">
+                        {{guest.fname}} {{guest.sname}}
+                    </div>
+                    <div>
+                        <div class="btn-group" style="min-width: 98px;" role="group">
+                            <button (click)="rsvpGuest(guest.guestId, 'Coming')"
+                                [class.btn-danger]="guest.response === 'Pending'"
+                                [class.btn-outline-success]="guest.response !== 'Pending'" style="min-width: 53px;"
+                                type="button" [class.active]="guest.response === 'Coming'" class="btn">
+                                Yes
+                            </button>
+                            <button (click)="rsvpGuest(guest.guestId, 'CantMakeIt')"
+                                [class.btn-danger]="guest.response === 'Pending'" style="min-width: 53px;"
+                                [class.btn-outline-success]="guest.response !== 'Pending'" type="button"
+                                [class.active]="guest.response === 'CantMakeIt'" class="btn">
+                                No
+                            </button>
+                        </div>
+                    </div>
                 </li>
 
-                <li *ngFor="let guestParty of guest.guestParties" class="list-group-item">
-                    {{guestParty.fname}} {{guestParty.sname}}
+                <li *ngFor="let guestParty of guest.guestParties"
+                    class="d-flex justify-content-between list-group-item">
+
+                    <div class="mt-2">
+                        {{guestParty.fname}} {{guestParty.sname}}
+                    </div>
+                    <div>
+                        <div class="btn-group" style="min-width: 98px;" role="group">
+                            <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'Coming')"
+                                [class.btn-danger]="guestParty.response === 'Pending'"
+                                [class.btn-outline-success]="guestParty.response !== 'Pending'" style="min-width: 53px;"
+                                type="button" [class.active]="guestParty.response === 'Coming'" class="btn">
+                                Yes
+                            </button>
+                            <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'CantMakeIt')"
+                                [class.btn-danger]="guestParty.response === 'Pending'" style="min-width: 53px;"
+                                [class.btn-outline-success]="guestParty.response !== 'Pending'" type="button"
+                                [class.active]="guestParty.response === 'CantMakeIt'" class="btn">
+                                No
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row mt-3 mb-5">
+            <ul class="list-group">
+                <li class="d-flex justify-content-between list-group-item">
+                    <div class="mt-2">
+                        Song Suggestions
+                    </div>
+                </li>
+
+
+                <li class="d-flex justify-content-between list-group-item" *ngFor="let song of guest.songSuggestions">
+                    <div>
+                        <small>{{song.title}}</small>
+                        <p style="margin-bottom: 0;">
+                            - <small>{{song.artist}}</small>
+                        </p>
+                    </div>
+                    <div>
+                        <button (click)="removeSuggestedSong(song)" class="btn btn-outline-danger">
+                            Remove
+                        </button>
+                    </div>
+                </li>
+
+                <li class="d-flex justify-content-end list-group-item">
+                    <div>
+                        <div class="input-group">
+                            <input #search value="" type="text" class="form-control" data-toggle="dropdown"
+                                placeholder="Suggest A Song">
+                            <div class="input-group-append">
+                                <button *ngIf="!songs || songs.length  < 1" (click)="searchSongs(search.value)"
+                                    class="btn btn-outline-secondary" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                                <button *ngIf="songs.length > 0" (click)="clearSongs(); search.value = ''"
+                                    class="btn btn-outline-danger" type="button">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li class="d-flex justify-content-between list-group-item" *ngFor="let song of songs">
+
+                    <div>
+                        <small class="ml-2">{{song.name}}</small>
+                        <p style="margin-bottom: 0;">
+                            - <small *ngFor="let artist of song.artists">{{artist.name}} </small>
+                        </p>
+                    </div>
+                    <div>
+                        <button (click)="suggestSong(song)" class="btn btn-secondary">
+                            Suggest
+                        </button>
+                    </div>
                 </li>
             </ul>
         </div>
     </ng-container>
 
-</div>
+
+    <ng-container *ngIf="loading">
+        <div class="d-flex justify-content-center mt-5">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </ng-container>

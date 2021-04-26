@@ -1,69 +1,69 @@
-
-  <!-- NAV START-->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light w-100">
-    <div class="container-fluid">
-      <a class="navbar-brand font-cursive" routerLink="/home"> Daynnah & Heinrich's Wedding</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/our-story">Our Story</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/gallery">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/q&a">Q&A</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/rsvp">RSVP</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          <li *ngIf="!adminId" class="d-flex nav-item pointer">
-            <a class="nav-link text-secondary pointer" data-bs-toggle="modal" data-bs-target="#login">admin login</a>
-          </li>
-          <li *ngIf="adminId" class="d-flex nav-item pointer">
-            <a class="nav-link text-secondary pointer" routerLink="/admin">manage wedding</a>
-          </li>
-          <li *ngIf="adminId" class="d-flex nav-item pointer">
-            <button class="btn btn-danger pointer" (click)="logout()">logout</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- NAV END-->
-
-  <app-wedding-date-countdown></app-wedding-date-countdown>
-
-
-
-  <router-outlet></router-outlet>
-
-  <div class="footer-basic">
-    <footer>
-        <p class="copyright">Developed By <a class="" target="https://www.swifthouse.co.za" href="https://www.swifthouse.co.za">Swifthouse Web (Pty) Ltd</a> (2021)</p>
-    </footer>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="login" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Admin Login</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <app-admin-login></app-admin-login>
-        </div>
-      </div>
+<!-- NAV START-->
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light w-100">
+  <div class="container-fluid">
+    <a class="navbar-brand font-cursive" routerLink="/home"> Daynnah & Heinrich's Wedding</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/our-story">Our Story</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/q&a">Q&A</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/rsvp">RSVP</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li *ngIf="!adminId" class="d-flex nav-item pointer">
+          <a class="nav-link text-secondary pointer" data-bs-toggle="modal" data-bs-target="#login">Admin Login</a>
+        </li>
+        <li *ngIf="adminId" class="d-flex nav-item pointer">
+          <a class="nav-link text-secondary pointer" routerLink="/admin">Manage Wedding</a>
+        </li>
+        <li *ngIf="adminId" class="d-flex nav-item pointer">
+          <button class="btn btn-danger pointer" (click)="logout()">Logout</button>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
+
+<!-- NAV END-->
+
+<app-wedding-date-countdown></app-wedding-date-countdown>
+
+
+
+<router-outlet></router-outlet>
+
+<!-- <div class="footer-basic">
+  <footer>
+    <p class="copyright">Developed By <a class="" target="https://www.swifthouse.co.za"
+        href="https://www.swifthouse.co.za">Swifthouse Web (Pty) Ltd</a> (2021)</p>
+  </footer>
+</div> -->
+
+<!-- Modal -->
+<div class="modal fade" id="login" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Admin Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-admin-login></app-admin-login>
+      </div>
+    </div>
+  </div>
+</div>
 
 <app-scroll-top></app-scroll-top>
