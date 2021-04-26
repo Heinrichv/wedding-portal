@@ -23,7 +23,6 @@ export class RsvpComponent implements OnInit {
   songs: any[] = [];
 
   ngOnInit(): void {
-    this.loading = true;
     const rsvp = window.localStorage.getItem('rsvp');
 
     if (rsvp) {
