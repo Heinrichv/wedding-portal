@@ -33,6 +33,7 @@ export class RsvpComponent implements OnInit {
   }
 
   loadGuest(): void {
+    this.loading = true;
     this.adminService.getGuestById(this.guest.guestId).subscribe((res: any) => {
       this.guest = res;
       window.localStorage.setItem('rsvp', JSON.stringify(this.guest));
@@ -44,8 +45,8 @@ export class RsvpComponent implements OnInit {
   }
 
   findGuest(): void {
+    this.loading = true;
     this.adminService.getGuestByGuestName(this.searchGuest.fname, this.searchGuest.lname).subscribe((res: any) => {
-      this.loading = true;
       this.guest = res;
       window.localStorage.setItem('rsvp', JSON.stringify(this.guest));
       this.loading = false;
