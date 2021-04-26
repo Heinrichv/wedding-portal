@@ -1,16 +1,39 @@
+<div [class.desktop]="desktop" [class.mobile]="!desktop">
+    <div class="text-center mt-1">
+        <p class="h2">{{wedding.bride}} & {{wedding.groom}} are Getting Married!</p>
+    </div>
 
-<div class="text-center mt-1">
-    <p class="h2">Daynnah & Heinrich are Getting Married!</p>
-    <p class="h4">{{countdown}}</p>
-</div>
 
-<div class="text-left ml-4" style="width: 100%;">
-    <div class="bg-img text-left ml-4">
-        <div class="text-left ml-4 mt-5">
-            
+    <div class="image">
+        <div class="bg-img">
+            <div class="d-flex justify-content-evenly align-items-end mt-2 container countdown">
+                <div class="bg-white text-center border rounded-3 p-2 countdown-block mb-3">
+                    <span class="countdown-text-number">{{countdown.days}}</span>
+                    <br>
+                    <span class="countdown-text-unit">Days</span>
+                </div>
+
+                <div class="bg-white text-center  border rounded-3 p-2 countdown-block mb-3">
+                    <span class="countdown-text-number">{{countdown.hours}}</span>
+                    <br>
+                    <span class="countdown-text-unit">Hours</span>
+                </div>
+
+                <div class="bg-white text-center border rounded-3 p-2 countdown-block mb-3">
+                    <span class="countdown-text-number">{{countdown.minutes}}</span>
+                    <br>
+                    <span class="countdown-text-unit">Minutes</span>
+                </div>
+
+                <div class="bg-white text-center border rounded-3 p-2 countdown-block mb-3">
+                    <span class="countdown-text-number">{{countdown.seconds}}</span>
+                    <br>
+                    <span class="countdown-text-unit">Seconds</span>
+                </div>
+
+            </div>
         </div>
     </div>
-    
+
+
 </div>
-
-

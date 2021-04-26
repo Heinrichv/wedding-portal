@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { AdminService } from './services/admin.service';
 
 @Component({
@@ -9,12 +10,16 @@ import { AdminService } from './services/admin.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(readonly router: Router) {
-  }
   adminId: any;
 
+  constructor(readonly deviceService: DeviceDetectorService, readonly router: Router) { }
+
+  desktop = false;
+
   ngOnInit(): void {
+    this.desktop = this.deviceService.isDesktop();
     this.adminId = window.localStorage.getItem('adminUserId');
+
   }
 
   logout() {

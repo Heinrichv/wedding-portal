@@ -1,17 +1,65 @@
-// p {
-//   font-family: 'Dancing Script', cursive;
-// }
-
-.bg-img {
-  position: relative;
-  overflow: hidden;
-  background-size: cover;
-  width: 100%;
-  background-image: url('../../../assets/photoshoot/Pioneer-2.jpg');
-  background-position: center center;
-  height: 400px;
+p,
+span {
+  font-family: 'Dancing Script', cursive;
 }
 
-.bg-img-txt-group {
-  top: 50px;
+div.desktop {
+  .bg-img {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    width: 100%;
+    background-image: url('../../../assets/photoshoot/Pioneer-2.jpg');
+    background-position: center center;
+    height: 400px;
+  }
+
+  .countdown {
+    height: 400px;
+  }
+
+  .countdown-block {
+    min-width: 105px;
+    max-height: 118px;
+  }
+
+  .countdown-text-unit {
+    font-size: .875em;
+  }
+
+  .countdown-text-number {
+    font-size: 50px;
+  }
+}
+
+.mobile {
+  .bg-img {
+    position: relative;
+    overflow: hidden;
+    background-size: 872px;
+    width: 100%;
+    background-image: url('../../../assets/photoshoot/Pioneer-2.jpg');
+    background-position-x: 597px;
+    background-position-y: 391px;
+    height: 200px;
+  }
+
+
+  .countdown {
+    height: 200px;
+  }
+
+  .countdown-block {
+    min-width: 73px;
+    max-height: 65px;
+  }
+
+  .countdown-text-unit {
+    font-size: .875em;
+  }
+
+  .countdown-text-number {
+    font-size: 17px;
+    font-weight: bold;
+  }
 }
