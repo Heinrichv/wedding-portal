@@ -1,6 +1,6 @@
-<div class="row mt-2 w-100">
-    <div class="col-10 w-100">
-        <ul class="nav nav-tabs w-100">
+<div class="row mt-2" style="width: 100vw;">
+    <div class="col-10" style="width: 100vw;">
+        <ul class="nav nav-tabs" style="width: 100vw;">
             <li class="nav-item pointer">
                 <a class="nav-link" [class.active]="activeTab == 'guests'" aria-current="page"
                     (click)="initGuests()">Guests</a>
@@ -12,24 +12,21 @@
         </ul>
 
         <ng-container *ngIf="activeTab == 'guests'">
-            <div class="row mt-2 w-100">
-                <div class="col-12">
+            <div class="d-flex justify-content-between mt-2 mb-2 " style="width: 100vw;">
+                <div class="mt-2">
+                    <span>Guest Total: {{getGuestCount()}}</span>
+                </div>
+                <div>
                     <button class="btn btn-primary mr-5 float-end" data-bs-toggle="modal"
                         data-bs-target="#manage-new-guest">
                         Add New Guest
                     </button>
                 </div>
-                <div class="col-10 mt-3">
-
-                </div>
-                <div class="col-2 mt-3">
-                    <span>Guest Total: {{getGuestCount()}}</span>
-                </div>
             </div>
 
             <div class="row w-100">
                 <div class="col-12">
-                    <table class="table">
+                    <table class="table" style="width: 100vw;">
                         <thead>
                             <tr>
                                 <th class="text-center" scope="col">Guest Type</th>
