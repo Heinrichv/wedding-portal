@@ -52,4 +52,15 @@ export class AdminComponent implements OnInit {
 
     return this.guests.length + guestParties;
   }
+
+  getGuestCountByStatus(status: any): number {
+    const guestParties = this.guests
+      .filter(x => x.response === status)
+      .map(x => x.guestParties.length)
+      .reduce((a, b) => {
+        return a + b;
+      }, 0);
+
+    return this.guests.filter(x => x.response === status).length + guestParties;
+  }
 }

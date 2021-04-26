@@ -12,15 +12,28 @@
         </ul>
 
         <ng-container *ngIf="activeTab == 'guests'">
-            <div class="d-flex justify-content-between mt-2 mb-2 " style="width: 100vw;">
-                <div class="mt-2">
-                    <span>Guest Total: {{getGuestCount()}}</span>
-                </div>
+
+            <div class="d-flex justify-content-end mt-2 mb-2 p-1" style="width: 100vw;">
+
                 <div>
-                    <button class="btn btn-primary mr-5 float-end" data-bs-toggle="modal"
-                        data-bs-target="#manage-new-guest">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#manage-new-guest">
                         Add New Guest
                     </button>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-around mt-2 mb-2 p-1" style="width: 100vw;">
+                <div class="mt-2">
+                    <span>Guests Total: {{getGuestCount()}}</span>
+                </div>
+                <div class="mt-2">
+                    <span>Guests Coming: {{getGuestCountByStatus('Coming')}}</span>
+                </div>
+                <div class="mt-2">
+                    <span>Guests Not Coming: {{getGuestCountByStatus('CantMakeIt')}}</span>
+                </div>
+                <div class="mt-2">
+                    <span>Guests Pending: {{getGuestCountByStatus('Pending')}}</span>
                 </div>
             </div>
 
