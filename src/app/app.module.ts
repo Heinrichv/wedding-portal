@@ -22,6 +22,8 @@ import { RsvpRedirectComponent } from './views/rsvp/rsvp-redirect/rsvp-redirect.
 import { LazyImgDirective } from './directives/LazyImgDirective';
 import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
 import { YoutubeService } from './services/youtube.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,11 @@ import { YoutubeService } from './services/youtube.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [GuestService, AdminService, YoutubeService],
   bootstrap: [AppComponent]
