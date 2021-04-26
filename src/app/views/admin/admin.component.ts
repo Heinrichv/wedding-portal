@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -10,12 +11,14 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AdminComponent implements OnInit {
 
   activeTab = 'guests';
-  constructor(readonly adminService: AdminService, readonly router: Router) { }
+  constructor(readonly adminService: AdminService, readonly router: Router, readonly deviceService: DeviceDetectorService) { }
 
   guests: any[] = [];
   tables: any[] = [];
+  isDesktop = false;
 
   ngOnInit(): void {
+    this.isDesktop = this.deviceService.isDesktop();
     this.initGuests();
   }
 
