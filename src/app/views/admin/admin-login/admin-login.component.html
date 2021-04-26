@@ -1,9 +1,11 @@
 <div class="row text-center">
     <div class="col-12">
-        <input class="form-control" placeholder="Username" type="text" [(ngModel)]="credentials.username">
+        <input class="form-control" id="loginUsername" placeholder="Username" type="text"
+            [(ngModel)]="credentials.username">
     </div>
     <div class="col-12 mt-3">
-        <input class="form-control" placeholder="Password" type="password" [(ngModel)]="credentials.password">
+        <input class="form-control" id="loginPassword" placeholder="Password" type="password"
+            [(ngModel)]="credentials.password">
     </div>
     <div class="col-12 mt-3">
         <button (click)="login()" [disabled]="loading" class="btn btn-outline-secondary" type="button">
