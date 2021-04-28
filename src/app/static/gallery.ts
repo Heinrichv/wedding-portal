@@ -35,7 +35,6 @@ export const gallery = {
         '../../assets/photoshoot/Pioneer-155.jpg',
         '../../assets/photoshoot/Pioneer-161.jpg',
         '../../assets/photoshoot/Pioneer-166.jpg',
-        '../../assets/photoshoot/Pioneer-177.jpg',
         '../../assets/photoshoot/Pioneer-181.jpg',
         '../../assets/photoshoot/Pioneer-200.jpg'
     ]
