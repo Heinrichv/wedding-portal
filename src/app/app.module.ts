@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,10 @@ import { ScrollTopComponent } from './components/scroll-top/scroll-top.component
 import { YoutubeService } from './services/youtube.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from './modules/shared/material.module';
+
 
 @NgModule({
   declarations: [
@@ -45,13 +49,17 @@ import { environment } from '../environments/environment';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:5000'
-    })
+    }),
+    MaterialModule
   ],
   providers: [GuestService, AdminService, YoutubeService],
   bootstrap: [AppComponent]

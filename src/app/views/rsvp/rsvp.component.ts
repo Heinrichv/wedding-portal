@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 import { YoutubeService } from 'src/app/services/youtube.service';
 
@@ -9,7 +10,7 @@ import { YoutubeService } from 'src/app/services/youtube.service';
 })
 export class RsvpComponent implements OnInit {
 
-  constructor(readonly adminService: AdminService, readonly youtube: YoutubeService) { }
+  constructor(readonly adminService: AdminService, readonly youtube: YoutubeService, readonly formBuilder: FormBuilder) { }
 
   loading = false;
 
@@ -22,7 +23,15 @@ export class RsvpComponent implements OnInit {
 
   songs: any[] = [];
 
+  rsvpForm = this.formBuilder.group({
+    id: ['', Validators.required]
+  });
+
   ngOnInit(): void {
+    this.rsvpForm = this.formBuilder.group({
+      id: ['', Validators.required]
+    });
+
     const rsvp = window.localStorage.getItem('rsvp');
 
     if (rsvp) {
