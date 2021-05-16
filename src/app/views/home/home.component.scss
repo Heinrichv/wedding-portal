@@ -1,6 +1,3 @@
-// p {
-//   font-family: 'Dancing Script', cursive;
-// }
 .script {
   font-family: 'Dancing Script', cursive;
 }
@@ -8,8 +5,7 @@
 .bg-img {
   position: relative;
   width: 100%;
-  //   background-image: url('../../../assets/bell-and-blossom-wood-gate.jpg');
-  background-image: url('../../../assets/bellandblossom-gate-garden.jpg');
+  background-image: url('/assets/bellandblossom-gate-garden.jpg');
   background-position: center center;
   height: 250px;
   overflow: hidden;
@@ -19,8 +15,7 @@
 .bg-img-header {
   position: relative;
   width: 100%;
-  //   background-image: url('../../../assets/bell-and-blossom-wood-gate.jpg');
-  background-image: url('../../../assets/bellblossomgateclosed.jpg');
+  background-image: url('/assets/bellblossomgateclosed.jpg');
   background-position: center center;
   height: 90px;
   overflow: hidden;

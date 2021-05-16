@@ -120,4 +120,9 @@ export class RsvpComponent implements OnInit {
     this.songs = [];
   }
 
+  splitItems(text: string) {
+
+    return text.split(', ');
+  }
+
 }
