@@ -46,8 +46,8 @@
                                 <th class="text-center" scope="col">First Name</th>
                                 <th class="text-center" scope="col">Last Name</th>
                                 <th class="text-center" scope="col">Email Address</th>
-                                <th class="text-center" scope="col" *ngIf="isDesktop">Response Status</th>
                                 <th class="text-center" scope="col" *ngIf="isDesktop">Invite Sent</th>
+                                <th class="text-center" scope="col" *ngIf="isDesktop">Response</th>
                                 <th class="text-center" scope="col" *ngIf="isDesktop"></th>
                             </tr>
                         </thead>
@@ -63,9 +63,8 @@
                                     <td class="text-center">{{guest.sname}}</td>
                                     <td class="text-center">{{guest.email}}</td>
                                     <td class="text-center" *ngIf="isDesktop">
-                                        <i class="bi" [class.bi-hourglass]="guest.response === 'Pending'"
-                                            [class.bi-x]="guest.response === 'CantMakeIt'"
-                                            [class.bi-check]="guest.response === 'Coming'"></i>
+                                        <i class="bi" [class.bi-x]="!guest.inviteSent"
+                                            [class.bi-check]="guest.inviteSent"></i>
                                     </td>
                                     <td class="text-center" *ngIf="isDesktop">
                                         <i class="bi" [class.bi-hourglass]="guest.response === 'Pending'"
@@ -74,12 +73,22 @@
                                     </td>
                                     <td *ngIf="isDesktop">
 
-                                        <button [class.text-white]="guest.response !== 'Pending'"
+                                        <button data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Send Invitation Email" (click)="sendInviteEmail(guest.guestId)"
+                                            *ngIf=" !guest.inviteSent" [class.text-white]="guest.response !== 'Pending'"
                                             class="btn btn-outline-secodary mr-1">
                                             <i class="bi bi-envelope"></i>
                                         </button>
 
-                                        <button [class.text-white]="guest.response !== 'Pending'"
+                                        <button data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Send Reminder Email" (click)="sendReminderEmail(guest.guestId)"
+                                            *ngIf="guest.inviteSent" [class.text-white]="guest.response !== 'Pending'"
+                                            class="btn btn-outline-secodary mr-1">
+                                            <i class="bi bi-bell"></i>
+                                        </button>
+
+                                        <button data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Guest"
+                                            [class.text-white]="guest.response !== 'Pending'"
                                             class="btn btn-outline-secodary" (click)="removeGuest(guest.guestId)">
                                             <i class="bi bi-trash"></i>
                                         </button>
@@ -98,9 +107,8 @@
                                         <td class="text-center">{{guestParty.sname}}</td>
                                         <td class="text-center"></td>
                                         <td class="text-center" *ngIf="isDesktop">
-                                            <i class="bi" [class.bi-hourglass]="guestParty.response === 'Pending'"
-                                                [class.bi-x]="guestParty.response === 'CantMakeIt'"
-                                                [class.bi-check]="guestParty.response === 'Coming'"></i>
+                                            <i class="bi" [class.bi-x]="!guestParty.inviteSent"
+                                                [class.bi-check]="guestParty.inviteSent"></i>
                                         </td>
                                         <td class="text-center" *ngIf="isDesktop">
                                             <i class="bi" [class.bi-hourglass]="guestParty.response === 'Pending'"
@@ -108,12 +116,27 @@
                                                 [class.bi-check]="guestParty.response === 'Coming'"></i>
                                         </td>
                                         <td *ngIf="isDesktop">
-                                            <button [class.text-white]="guestParty.response !== 'Pending'"
+                                            <button data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Send Invitation Email"
+                                                (click)="sendInviteEmail(guestParty.guestId)"
+                                                *ngIf="!guestParty.inviteSent"
+                                                [class.text-white]="guestParty.response !== 'Pending'"
                                                 class="btn btn-outline-secodary mr-1">
                                                 <i class="bi bi-envelope"></i>
                                             </button>
 
-                                            <button [class.text-white]="guestParty.response !== 'Pending'"
+                                            <button data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Send Reminder Email"
+                                                (click)="sendReminderEmail(guestParty.guestId)"
+                                                *ngIf="guestParty.inviteSent"
+                                                [class.text-white]="guestParty.response !== 'Pending'"
+                                                class="btn btn-outline-secodary mr-1">
+                                                <i class="bi bi-bell"></i>
+                                            </button>
+
+                                            <button data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Remove Guest"
+                                                [class.text-white]="guestParty.response !== 'Pending'"
                                                 class="btn btn-outline-secodary"
                                                 (click)="removeGuestParty(guestParty.guestPartyId)">
                                                 <i class="bi bi-trash"></i>
