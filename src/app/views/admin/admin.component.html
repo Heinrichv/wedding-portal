@@ -47,6 +47,7 @@
                                 <th class="text-center" scope="col">Last Name</th>
                                 <th class="text-center" scope="col">Email Address</th>
                                 <th class="text-center" scope="col" *ngIf="isDesktop">Response Status</th>
+                                <th class="text-center" scope="col" *ngIf="isDesktop">Invite Sent</th>
                                 <th class="text-center" scope="col" *ngIf="isDesktop"></th>
                             </tr>
                         </thead>
@@ -66,10 +67,22 @@
                                             [class.bi-x]="guest.response === 'CantMakeIt'"
                                             [class.bi-check]="guest.response === 'Coming'"></i>
                                     </td>
+                                    <td class="text-center" *ngIf="isDesktop">
+                                        <i class="bi" [class.bi-hourglass]="guest.response === 'Pending'"
+                                            [class.bi-x]="guest.response === 'CantMakeIt'"
+                                            [class.bi-check]="guest.response === 'Coming'"></i>
+                                    </td>
                                     <td *ngIf="isDesktop">
-                                        <a [class.text-white]="guest.response === 'CantMakeIt' || guest.response === 'Coming'"
-                                            [class.text-danger]="guest.response !== 'CantMakeIt'" class="pointer"
-                                            (click)="removeGuest(guest.guestId)">Remove</a>
+
+                                        <button [class.text-white]="guest.response !== 'Pending'"
+                                            class="btn btn-outline-secodary mr-1">
+                                            <i class="bi bi-envelope"></i>
+                                        </button>
+
+                                        <button [class.text-white]="guest.response !== 'Pending'"
+                                            class="btn btn-outline-secodary" (click)="removeGuest(guest.guestId)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
 
@@ -89,11 +102,22 @@
                                                 [class.bi-x]="guestParty.response === 'CantMakeIt'"
                                                 [class.bi-check]="guestParty.response === 'Coming'"></i>
                                         </td>
+                                        <td class="text-center" *ngIf="isDesktop">
+                                            <i class="bi" [class.bi-hourglass]="guestParty.response === 'Pending'"
+                                                [class.bi-x]="guestParty.response === 'CantMakeIt'"
+                                                [class.bi-check]="guestParty.response === 'Coming'"></i>
+                                        </td>
                                         <td *ngIf="isDesktop">
-                                            <a [class.text-white]="guestParty.response === 'CantMakeIt' || guestParty.response === 'Coming'"
-                                                [class.text-danger]="guestParty.response !== 'CantMakeIt'"
-                                                class="text-danger pointer"
-                                                (click)="removeGuestParty(guestParty.guestPartyId)">Remove</a>
+                                            <button [class.text-white]="guestParty.response !== 'Pending'"
+                                                class="btn btn-outline-secodary mr-1">
+                                                <i class="bi bi-envelope"></i>
+                                            </button>
+
+                                            <button [class.text-white]="guestParty.response !== 'Pending'"
+                                                class="btn btn-outline-secodary"
+                                                (click)="removeGuestParty(guestParty.guestPartyId)">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 </ng-container>

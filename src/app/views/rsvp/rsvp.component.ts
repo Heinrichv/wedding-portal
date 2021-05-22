@@ -89,6 +89,9 @@ export class RsvpComponent implements OnInit {
 
   suggestSong(song: any): void {
     this.loading = true;
+
+    this.songs = this.songs.filter(x => x !== song);
+
     this.adminService.suggestSong(this.guest.guestId, {
       title: song.name,
       artist: (song.artists as any[]).map(x => x.name).join(', '),

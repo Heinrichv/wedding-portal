@@ -1,12 +1,27 @@
+<app-wedding-date-countdown></app-wedding-date-countdown>
+
+
 <div class="container mb-5">
-    <ng-container *ngIf="!guest && !loading">
+    <ng-container *ngIf="!guest">
+        <ul class="list-group">
+            <li class="mt-2 mb-2 d-flex justify-content-between list-group-item w-100">
+                <div>
+                    <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#howtorsvp">How To
+                        RSVP</button>
+                </div>
+            </li>
+        </ul>
+
         <div class="d-flex justify-content-center">
-            <p class="mt-3">Please enter your first name & last name below to find your invite</p>
+            <p class="mt-3">Please enter your name & surname below to find your invitation.</p>
         </div>
         <div class="d-flex justify-content-center mb-3 mt-3">
             <div class="input-group d-flex justify-content-center">
-                <input style="max-width: 250px;" type="text" class="form-control" placeholder="First Name" id="guestFirstName" autocomplete="off" [(ngModel)]="searchGuest.fname">
-                <input style="max-width: 250px;" type="text" class="form-control" placeholder="Last Name" id="guestLastName" autocomplete="off" [(ngModel)]="searchGuest.lname">
+                <input style="max-width: 250px;" type="text" name="guestFirstName" class="form-control"
+                    placeholder="Name" id="guestFirstName" autocomplete="off" [(ngModel)]="searchGuest.fname">
+                <input (keyup.enter)="findGuest()" style="max-width: 250px;" type="text" class="form-control"
+                    placeholder="Surname" id="guestLastName" name="guestLastName" autocomplete="off"
+                    [(ngModel)]="searchGuest.lname">
                 <button class="btn btn-outline-secondary" type="button" (click)="findGuest()">
                     Find
                 </button>
@@ -14,124 +29,12 @@
         </div>
     </ng-container>
 
-    <!-- <ng-container *ngIf="guest && !loading">
-
-        <div class="row mt-3">
-            <ul class="list-group">
-                <li class="d-flex justify-content-between list-group-item w-100">
-                    <div class="mt-2">
-                        Guest List RSVP
-                    </div>
-                    <div>
-                        <div class="btn-group" style="min-width: 98px;" role="group">
-                            <button (click)="logout()" class="btn btn-danger">Logout</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="d-flex justify-content-between list-group-item w-100">
-                    <div class="mt-2">
-                        {{guest.fname}} {{guest.sname}}
-                    </div>
-                    <div>
-                        <div class="btn-group" style="min-width: 98px;" role="group">
-                            <button (click)="rsvpGuest(guest.guestId, 'Coming')" [class.btn-danger]="guest.response === 'Pending'" [class.btn-outline-success]="guest.response !== 'Pending'" style="min-width: 53px;" type="button" [class.active]="guest.response === 'Coming'" class="btn">
-                                Yes
-                            </button>
-                            <button (click)="rsvpGuest(guest.guestId, 'CantMakeIt')" [class.btn-danger]="guest.response === 'Pending'" style="min-width: 53px;" [class.btn-outline-success]="guest.response !== 'Pending'" type="button" [class.active]="guest.response === 'CantMakeIt'" class="btn">
-                                No
-                            </button>
-                        </div>
-                    </div>
-                </li>
-
-                <li *ngFor="let guestParty of guest.guestParties" class="d-flex justify-content-between list-group-item">
-
-                    <div class="mt-2">
-                        {{guestParty.fname}} {{guestParty.sname}}
-                    </div>
-                    <div>
-                        <div class="btn-group" style="min-width: 98px;" role="group">
-                            <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'Coming')" [class.btn-danger]="guestParty.response === 'Pending'" [class.btn-outline-success]="guestParty.response !== 'Pending'" style="min-width: 53px;" type="button" [class.active]="guestParty.response === 'Coming'" class="btn">
-                                Yes
-                            </button>
-                            <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'CantMakeIt')" [class.btn-danger]="guestParty.response === 'Pending'" style="min-width: 53px;" [class.btn-outline-success]="guestParty.response !== 'Pending'" type="button" [class.active]="guestParty.response === 'CantMakeIt'" class="btn">
-                                No
-                            </button>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="row mt-3 mb-5">
-            <ul class="list-group">
-                <li class="d-flex justify-content-between list-group-item">
-                    <div class="mt-2">
-                        Song Suggestions
-                    </div>
-                </li>
-
-
-                <li class="d-flex justify-content-between list-group-item" *ngFor="let song of guest.songSuggestions">
-                    <div>
-                        <small>{{song.title}}</small>
-                        <p style="margin-bottom: 0;">
-                            - <small>{{song.artist}}</small>
-                        </p>
-                    </div>
-                    <div>
-                        <button (click)="removeSuggestedSong(song)" class="btn btn-outline-danger">
-                            Remove
-                        </button>
-                    </div>
-                </li>
-
-                <li class="d-flex justify-content-end list-group-item">
-                    <div>
-                        <div class="input-group">
-                            <input #search value="" type="text" class="form-control" data-toggle="dropdown" placeholder="Suggest A Song">
-                            <div class="input-group-append">
-                                <button *ngIf="!songs || songs.length  < 1" (click)="searchSongs(search.value)" class="btn btn-outline-secondary" type="button">
-                                    <i class="bi bi-search"></i>
-                                </button>
-                                <button *ngIf="songs.length > 0" (click)="clearSongs(); search.value = ''" class="btn btn-outline-danger" type="button">
-                                    <i class="bi bi-x"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-
-                <li class="d-flex justify-content-between list-group-item" *ngFor="let song of songs">
-
-                    <div>
-                        <small class="ml-2">{{song.name}}</small>
-                        <p style="margin-bottom: 0;">
-                            - <small *ngFor="let artist of song.artists">{{artist.name}} </small>
-                        </p>
-                    </div>
-                    <div>
-                        <button (click)="suggestSong(song)" class="btn btn-secondary">
-                            Suggest
-                        </button>
-                    </div>
-                </li>
-            </ul>
-        </div> 
-    </ng-container> -->
-
-    <ng-container *ngIf="loading">
-        <div class="d-flex justify-content-center mt-5">
-            <mat-spinner></mat-spinner>
-        </div>
-    </ng-container>
-
-    <ng-container *ngIf="guest && !loading">
+    <ng-container *ngIf="guest">
         <ul class="list-group">
             <li class="mt-2 mb-2 d-flex justify-content-between list-group-item w-100">
                 <div>
-
+                    <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#howtorsvp">How To
+                        RSVP</button>
                 </div>
                 <div>
                     <div class="btn-group" style="min-width: 98px;" role="group">
@@ -157,27 +60,44 @@
                                 </div>
                                 <div>
                                     <div class="btn-group" style="min-width: 98px;" role="group">
-                                        <button (click)="rsvpGuest(guest.guestId, 'Coming')" [class.btn-danger]="guest.response === 'Pending'" [class.btn-outline-success]="guest.response !== 'Pending'" style="min-width: 53px;" type="button" [class.active]="guest.response === 'Coming'" class="btn">
+                                        <button (click)="rsvpGuest(guest.guestId, 'Coming')"
+                                            [class.btn-danger]="guest.response === 'Pending'"
+                                            [class.btn-outline-success]="guest.response !== 'Pending'"
+                                            style="min-width: 53px;" type="button"
+                                            [class.active]="guest.response === 'Coming'" class="btn">
                                             Yes
                                         </button>
-                                        <button (click)="rsvpGuest(guest.guestId, 'CantMakeIt')" [class.btn-danger]="guest.response === 'Pending'" style="min-width: 53px;" [class.btn-outline-success]="guest.response !== 'Pending'" type="button" [class.active]="guest.response === 'CantMakeIt'" class="btn">
+                                        <button (click)="rsvpGuest(guest.guestId, 'CantMakeIt')"
+                                            [class.btn-danger]="guest.response === 'Pending'" style="min-width: 53px;"
+                                            [class.btn-outline-success]="guest.response !== 'Pending'" type="button"
+                                            [class.active]="guest.response === 'CantMakeIt'" class="btn">
                                             No
                                         </button>
                                     </div>
                                 </div>
                             </li>
 
-                            <li *ngFor="let guestParty of guest.guestParties" class="d-flex justify-content-between list-group-item">
+                            <li *ngFor="let guestParty of guest.guestParties"
+                                class="d-flex justify-content-between list-group-item">
 
                                 <div class="mt-2">
                                     {{guestParty.fname}} {{guestParty.sname}}
                                 </div>
                                 <div>
                                     <div class="btn-group" style="min-width: 98px;" role="group">
-                                        <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'Coming')" [class.btn-danger]="guestParty.response === 'Pending'" [class.btn-outline-success]="guestParty.response !== 'Pending'" style="min-width: 53px;" type="button" [class.active]="guestParty.response === 'Coming'" class="btn">
+                                        <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'Coming')"
+                                            [class.btn-danger]="guestParty.response === 'Pending'"
+                                            [class.btn-outline-success]="guestParty.response !== 'Pending'"
+                                            style="min-width: 53px;" type="button"
+                                            [class.active]="guestParty.response === 'Coming'" class="btn">
                                             Yes
                                         </button>
-                                        <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'CantMakeIt')" [class.btn-danger]="guestParty.response === 'Pending'" style="min-width: 53px;" [class.btn-outline-success]="guestParty.response !== 'Pending'" type="button" [class.active]="guestParty.response === 'CantMakeIt'" class="btn">
+                                        <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'CantMakeIt')"
+                                            [class.btn-danger]="guestParty.response === 'Pending'"
+                                            style="min-width: 53px;"
+                                            [class.btn-outline-success]="guestParty.response !== 'Pending'"
+                                            type="button" [class.active]="guestParty.response === 'CantMakeIt'"
+                                            class="btn">
                                             No
                                         </button>
                                     </div>
@@ -201,51 +121,25 @@
                                 <div class="mt-2">
                                     Song Suggestions
                                 </div>
+
+                                <button class="btn btn-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#suggestsong">Suggest Song</button>
                             </li>
 
 
-                            <li class="d-flex justify-content-between list-group-item" *ngFor="let song of guest.songSuggestions">
+                            <li class="d-flex justify-content-between list-group-item"
+                                *ngFor="let song of guest.songSuggestions">
                                 <div>
                                     <mat-chip class="mb-2" color="primary" selected>{{song.title}}</mat-chip>
                                     <mat-chip-list class="mt-1">
-                                        <mat-chip *ngFor="let artist of splitItems(song.artist)">{{artist}}</mat-chip>
+                                        <mat-chip>
+                                            {{splitItems(song.artist)[0]}}
+                                        </mat-chip>
                                     </mat-chip-list>
                                 </div>
                                 <div>
                                     <button (click)="removeSuggestedSong(song)" class="btn btn-outline-danger">
                                         Remove
-                                    </button>
-                                </div>
-                            </li>
-
-                            <li class="d-flex justify-content-end list-group-item">
-                                <div>
-                                    <div class="input-group">
-                                        <input #search value="" type="text" class="form-control" data-toggle="dropdown" placeholder="Song Search">
-                                        <div class="input-group-append">
-                                            <button *ngIf="!songs || songs.length  < 1" (click)="searchSongs(search.value)" class="btn btn-outline-secondary" type="button">
-                                                <i class="bi bi-search"></i>
-                                            </button>
-                                            <button *ngIf="songs.length > 0" (click)="clearSongs(); search.value = ''" class="btn btn-outline-danger" type="button">
-                                                <i class="bi bi-x"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </li>
-
-                            <li class="d-flex justify-content-between list-group-item" *ngFor="let song of songs">
-
-                                <div>
-                                    <mat-chip class="mb-2" color="primary" selected>{{song.name}}</mat-chip>
-                                    <mat-chip-list class="mt-1">
-                                        <mat-chip *ngFor="let artist of song.artists">{{artist.name}}</mat-chip>
-                                    </mat-chip-list>
-                                </div>
-                                <div>
-                                    <button (click)="suggestSong(song)" class="btn btn-secondary">
-                                        Suggest
                                     </button>
                                 </div>
                             </li>
@@ -267,3 +161,83 @@
             </mat-step>
         </mat-vertical-stepper>
     </ng-container>
+
+    <div class="modal fade" id="suggestsong" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Suggest A Song</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-end">
+                        <div class="input-group">
+                            <input (keyup.enter)="searchSongs(search.value)" #search value="" type="text"
+                                class="form-control" data-toggle="dropdown" placeholder="Artist Name/Song Title Search">
+                            <div class="input-group-append">
+                                <button *ngIf="!songs || songs.length  < 1" (click)="searchSongs(search.value)"
+                                    class="btn btn-outline-secondary" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                                <button *ngIf="songs.length > 0" (click)="clearSongs(); search.value = ''"
+                                    class="btn btn-outline-danger" type="button">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <ul class="list-group">
+                        <li class="d-flex justify-content-between list-group-item pointer" (click)="suggestSong(song)"
+                            *ngFor="let song of songs">
+                            <div class="pointer" (click)="suggestSong(song)">
+                                <mat-chip-list (click)="suggestSong(song)" class="mt-1 pointer">
+                                    <mat-chip class="pointer" (click)="suggestSong(song)" color="primary" selected>
+                                        {{song.name}}
+                                    </mat-chip>
+                                    <mat-chip class="pointer" (click)="suggestSong(song)">
+                                        {{song.artists[0].name}}
+                                    </mat-chip>
+                                </mat-chip-list>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="howtorsvp" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">How To RSVP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p>
+                    <p>
+                        <u>Step 1</u> <br>
+                        Find your invitation below by using your name and surname.
+                        <img style="width: 100%;" src="../../../assets/screenshots/find-invite.JPG">
+                    </p>
+                    <p>
+                        <u>Step 2</u> <br>
+                        Manage RSVP status of guests by indicating 'Yes' or 'No' as seen below:
+                        <img style="width: 100%;" src="../../../assets/screenshots/manage-rsvp.JPG">
+                    </p>
+                    <p>
+                        <u>Step 3</u> <br>
+                        Suggest a few songs which you would like to hear the DJ play by clicking on the 'Suggest a
+                        Song' button, then search by either song title or artist name.
+                        <img style="width: 100%;" src="../../../assets/screenshots/suggest-a-song.jpg">
+                    </p>
+                    <p>
+                        <u>Step 4</u> <br>
+                        Start counting the days till our big day!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>

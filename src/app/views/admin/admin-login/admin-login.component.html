@@ -4,7 +4,7 @@
             [(ngModel)]="credentials.username">
     </div>
     <div class="col-12 mt-3">
-        <input class="form-control" id="loginPassword" placeholder="Password" type="password"
+        <input (keyup.enter)="login()" class="form-control" id="loginPassword" placeholder="Password" type="password"
             [(ngModel)]="credentials.password">
     </div>
     <div class="col-12 mt-3">
