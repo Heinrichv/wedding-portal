@@ -15,7 +15,8 @@
         <div class="d-flex justify-content-center">
             <p class="mt-3">Please enter your name & surname below to find your invitation.</p>
         </div>
-        <div class="d-flex justify-content-center mb-3 mt-3">
+
+        <div *ngIf="desktop" class="d-flex justify-content-center mb-5 mt-3">
             <div class="input-group d-flex justify-content-center">
                 <input style="max-width: 250px;" type="text" name="guestFirstName" class="form-control" placeholder="Name" id="guestFirstName" autocomplete="off" [(ngModel)]="searchGuest.fname">
                 <input (keyup.enter)="findGuest()" style="max-width: 250px;" type="text" class="form-control" placeholder="Surname" id="guestLastName" name="guestLastName" autocomplete="off" [(ngModel)]="searchGuest.lname">
@@ -24,6 +25,17 @@
                 </button>
             </div>
         </div>
+
+        <div *ngIf="!desktop" class="d-flex justify-content-center mb-5 mt-3">
+            <div class="text-center">
+                <input style="max-width: 250px;" type="text" name="guestFirstName" class="form-control mt-2" placeholder="Name" id="guestFirstName" autocomplete="off" [(ngModel)]="searchGuest.fname">
+                <input (keyup.enter)="findGuest()" style="max-width: 250px;" type="text" class="form-control mt-2" placeholder="Surname" id="guestLastName" name="guestLastName" autocomplete="off" [(ngModel)]="searchGuest.lname">
+                <button class="btn btn-outline-secondary mt-2" type="button" (click)="findGuest()">
+                    Find
+                </button>
+            </div>
+        </div>
+
     </ng-container>
 
     <ng-container *ngIf="guest">
@@ -224,3 +236,8 @@
             </div>
         </div>
     </div>
+
+    <div class="text-center mt-5 mb-3">
+        <img style="width: 500px; max-width: 75vw;" src="../../../assets/emails/floral.png">
+    </div>
+</div>

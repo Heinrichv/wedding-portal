@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { AdminService } from 'src/app/services/admin.service';
 import { YoutubeService } from 'src/app/services/youtube.service';
 
@@ -10,24 +11,28 @@ import { YoutubeService } from 'src/app/services/youtube.service';
 })
 export class RsvpComponent implements OnInit {
 
-  constructor(readonly adminService: AdminService, readonly youtube: YoutubeService, readonly formBuilder: FormBuilder) { }
+  constructor(
+    readonly adminService: AdminService,
+    readonly youtube: YoutubeService,
+    readonly formBuilder: FormBuilder,
+    readonly deviceService: DeviceDetectorService
+  ) { }
 
+  desktop = false;
   loading = false;
-
+  guest: any;
+  songs: any[] = [];
   searchGuest: any = {
     fname: null,
     lname: null
   };
-
-  guest: any;
-
-  songs: any[] = [];
 
   rsvpForm = this.formBuilder.group({
     id: ['', Validators.required]
   });
 
   ngOnInit(): void {
+    this.desktop = this.deviceService.isDesktop();
     this.rsvpForm = this.formBuilder.group({
       id: ['', Validators.required]
     });
@@ -71,7 +76,6 @@ export class RsvpComponent implements OnInit {
       this.loading = false;
     });
   }
-
 
   rsvpGuestParty(guestPartyId: any, option: string): void {
     this.loading = true;
@@ -123,9 +127,7 @@ export class RsvpComponent implements OnInit {
     this.songs = [];
   }
 
-  splitItems(text: string) {
-
+  splitItems(text: string): any[] {
     return text.split(', ');
   }
-
 }
