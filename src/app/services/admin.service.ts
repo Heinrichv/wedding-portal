@@ -69,4 +69,8 @@ export class AdminService {
   removeSuggestedSong(id: any): Observable<any> {
     return this.http.delete(`${environment.api.url}/api/admin/guest/songsuggestion/${id}`);
   }
+
+  sendInviteEmail(guestId: any): Observable<any> {
+    return this.http.post(`${environment.api.url}/api/admin/guest/${guestId}/mail/invite`, null);
+  }
 }

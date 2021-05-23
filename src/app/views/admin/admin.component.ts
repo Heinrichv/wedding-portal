@@ -64,11 +64,11 @@ export class AdminComponent implements OnInit {
     return this.guests.filter(x => x.response === status).length + guestParties;
   }
 
-  sendInviteEmail(guestId: any) {
-
+  sendInviteEmail(guestId: any): void {
+    this.adminService.sendInviteEmail(guestId).subscribe(_ => { });
   }
 
-  sendReminderEmail(guestId: any) {
+  sendReminderEmail(guestId: any): void {
 
   }
 }
