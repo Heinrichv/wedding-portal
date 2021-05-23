@@ -69,6 +69,6 @@ export class AdminComponent implements OnInit {
   }
 
   sendReminderEmail(guestId: any): void {
-
+    this.adminService.sendInviteEmail(guestId).subscribe(_ => { });
   }
 }
