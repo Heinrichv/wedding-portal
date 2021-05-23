@@ -9,40 +9,45 @@ export class QAndAComponent implements OnInit {
 
   questions = [
     {
-      question: 'By when should I RSVP?',
-      answer: '15 July 2021',
+      question: 'When is the RSVP cut-off date?',
+      answer: 'Please RSVP before 15 July 2021',
       id: 'one'
     },
     {
       question: 'What is the dress code?',
-      answer: 'Semi-Formal',
+      answer: 'Semi-Formal to Formal',
       id: 'two'
     },
     {
-      question: 'Is the wedding outdoor or in a building?',
-      answer: 'Outside & inside.\r\nBring enough warm clothes or come dance your hot.',
+      question: 'Is it an outdoor wedding?',
+      answer: 'Our ceremony will be indoors following that will a pre-reception in the garden. \r\nFollowed by our reception which is indoors.',
       id: 'three'
     },
     {
       question: 'Can I bring the children along?',
-      answer: 'As much as we love children, our numbers are limited & we can not allow children.',
+      answer: 'To give all our guests the opportunity to celebrate without having to worry about little eyes and ears, we politely request no children.',
       id: 'four'
     },
     {
-      question: 'Can I bring a companion?',
-      answer: 'Our numbers are unfortunately limited at the venue, we may be able to make arrangements later.',
+      question: 'Can I bring a partner?',
+      answer: 'Our numbers are unfortunately limited at the venue. All invited guests have been named on the invitation.',
       id: 'five'
     },
     {
       question: 'May I take photos during the ceremony & reception?',
       // tslint:disable-next-line:max-line-length
-      answer: 'We want to keep the wedding "offline", so take a quick photo & save the phone. \r\nUse #foreverventer if you post something.',
+      answer: 'We want to keep the ceremony "unplugged" and we have hired professional photographers to capture how this moment looks with their camera, so you can capture how it feels in your hearts. Please turn off your cellphones & cameras during the ceremony.\r\nFor photos taken after the ceremony, please use #foreverventer for posting on Social Media.',
       id: 'six'
     },
     {
-      question: 'Is the bar an "open bar"?',
-      answer: 'No. Cash bar with card facility available',
+      question: 'How will the bar at the venue work?',
+      answer: 'The venue has a cash bar with card facilities available. NB. No car-bar or cooler boxes are allowed.',
       id: 'seven'
+    },
+    {
+      question: 'What will be the perfect gift for the newly weds?',
+      answer: 'As we\'ve got our home dressed up with accessories, we don\'t really think that a wedding registry is necessary. But if you do want to give something to help us on our way, some money in a card will would truly make our day.',
+      id: 'eight'
     }
   ];
 
