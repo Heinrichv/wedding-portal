@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
   activeTab = 'guests';
   constructor(readonly adminService: AdminService, readonly router: Router, readonly deviceService: DeviceDetectorService) { }
 
+  emailTitle = '';
   guests: any[] = [];
   tables: any[] = [];
   isDesktop = false;
@@ -64,11 +65,11 @@ export class AdminComponent implements OnInit {
     return this.guests.filter(x => x.response === status).length + guestParties;
   }
 
-  sendInviteEmail(guestId: any): void {
-    this.adminService.sendInviteEmail(guestId).subscribe(_ => { });
+  sendInviteEmail(guestId: any, title: string): void {
+    this.adminService.sendInviteEmail(guestId, title).subscribe(_ => this.initGuests());
   }
 
-  sendReminderEmail(guestId: any): void {
-    this.adminService.sendInviteEmail(guestId).subscribe(_ => { });
+  sendReminderEmail(guestId: any, title: string): void {
+    this.adminService.sendInviteEmail(guestId, title).subscribe(_ => this.initGuests());
   }
 }

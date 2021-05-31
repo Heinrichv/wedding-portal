@@ -71,17 +71,24 @@
                                             [class.bi-x]="guest.response === 'CantMakeIt'"
                                             [class.bi-check]="guest.response === 'Coming'"></i>
                                     </td>
-                                    <td *ngIf="isDesktop">
 
+                                    <td *ngIf="isDesktop" class="text-center">
+                                        <input [(ngModel)]="guest.emailTitle" class="form-control" type="text"
+                                            placeholder="Email Title">
+                                    </td>
+
+                                    <td>
                                         <button data-bs-toggle="tooltip" data-bs-placement="top"
-                                            title="Send Invitation Email" (click)="sendInviteEmail(guest.guestId)"
+                                            title="Send Invitation Email"
+                                            (click)="sendInviteEmail(guest.guestId, guest.emailTitle)"
                                             *ngIf=" !guest.inviteSent" [class.text-white]="guest.response !== 'Pending'"
                                             class="btn btn-outline-secodary mr-1">
                                             <i class="bi bi-envelope"></i>
                                         </button>
 
                                         <button data-bs-toggle="tooltip" data-bs-placement="top"
-                                            title="Send Reminder Email" (click)="sendReminderEmail(guest.guestId)"
+                                            title="Send Reminder Email"
+                                            (click)="sendReminderEmail(guest.guestId, guest.emailTitle)"
                                             *ngIf="guest.inviteSent" [class.text-white]="guest.response !== 'Pending'"
                                             class="btn btn-outline-secodary mr-1">
                                             <i class="bi bi-bell"></i>
@@ -115,10 +122,16 @@
                                                 [class.bi-x]="guestParty.response === 'CantMakeIt'"
                                                 [class.bi-check]="guestParty.response === 'Coming'"></i>
                                         </td>
+                                        <td class="text-center" *ngIf="isDesktop">
+                                            <input [(ngModel)]="guestParty.emailTitle" class="form-control" type="text"
+                                                placeholder="Email Title">
+                                        </td>
+
+
                                         <td *ngIf="isDesktop">
                                             <button data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="Send Invitation Email"
-                                                (click)="sendInviteEmail(guestParty.guestId)"
+                                                (click)="sendInviteEmail(guestParty.guestId, guestParty.emailTitle)"
                                                 *ngIf="!guestParty.inviteSent"
                                                 [class.text-white]="guestParty.response !== 'Pending'"
                                                 class="btn btn-outline-secodary mr-1">
@@ -127,7 +140,7 @@
 
                                             <button data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="Send Reminder Email"
-                                                (click)="sendReminderEmail(guestParty.guestId)"
+                                                (click)="sendReminderEmail(guestParty.guestId, guestParty.emailTitle)"
                                                 *ngIf="guestParty.inviteSent"
                                                 [class.text-white]="guestParty.response !== 'Pending'"
                                                 class="btn btn-outline-secodary mr-1">
