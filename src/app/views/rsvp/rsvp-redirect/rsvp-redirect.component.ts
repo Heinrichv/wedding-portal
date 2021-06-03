@@ -22,7 +22,7 @@ export class RsvpRedirectComponent implements OnInit {
       this.admin.getGuestByRsvpCode(code).subscribe((res: any) => {
         window.localStorage.setItem('rsvp', JSON.stringify(res));
 
-        this.router.navigateByUrl('rsvp');
+        this.router.navigateByUrl('home');
       }, (err) => {
         this.error = 'Guest not found';
       });

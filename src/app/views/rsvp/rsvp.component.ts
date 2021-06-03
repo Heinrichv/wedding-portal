@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatStepper } from '@angular/material/stepper';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { AdminService } from 'src/app/services/admin.service';
 import { YoutubeService } from 'src/app/services/youtube.service';
@@ -15,7 +17,8 @@ export class RsvpComponent implements OnInit {
     readonly adminService: AdminService,
     readonly youtube: YoutubeService,
     readonly formBuilder: FormBuilder,
-    readonly deviceService: DeviceDetectorService
+    readonly deviceService: DeviceDetectorService,
+    readonly snackbar: MatSnackBar
   ) { }
 
   desktop = false;
@@ -28,14 +31,15 @@ export class RsvpComponent implements OnInit {
   };
 
   rsvpForm = this.formBuilder.group({
-    id: ['', Validators.required]
+    rsvp: [null, Validators.required]
+  });
+
+  songForm = this.formBuilder.group({
+    songs: [null, Validators.required]
   });
 
   ngOnInit(): void {
     this.desktop = this.deviceService.isDesktop();
-    this.rsvpForm = this.formBuilder.group({
-      id: ['', Validators.required]
-    });
 
     const rsvp = window.localStorage.getItem('rsvp');
 
@@ -129,5 +133,30 @@ export class RsvpComponent implements OnInit {
 
   splitItems(text: string): any[] {
     return text.split(', ');
+  }
+
+  next(step: string, stepper: MatStepper) {
+    switch (step) {
+      case 'rsvp':
+        if (this.guest.response === 'Pending' || this.guest.guestParties.filter((p: any) => p.response === 'Pending').length > 0) {
+          this.snackbar.open('Please RSVP for all listed guests before continuing', undefined, {
+            duration: 2000,
+            politeness: 'polite'
+          });
+          return;
+        }
+        break;
+      case 'song-suggest':
+        if (this.guest.songSuggestions.length === 0) {
+          this.snackbar.open('Please suggest a song for the DJ', undefined, {
+            duration: 2000,
+            politeness: 'polite'
+          });
+          return;
+        }
+        break;
+    }
+
+    stepper.next();
   }
 }

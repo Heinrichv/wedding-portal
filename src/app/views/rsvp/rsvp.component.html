@@ -18,8 +18,11 @@
 
         <div *ngIf="desktop" class="d-flex justify-content-center mb-5 mt-3">
             <div class="input-group d-flex justify-content-center">
-                <input style="max-width: 250px;" type="text" name="guestFirstName" class="form-control" placeholder="Name" id="guestFirstName" autocomplete="off" [(ngModel)]="searchGuest.fname">
-                <input (keyup.enter)="findGuest()" style="max-width: 250px;" type="text" class="form-control" placeholder="Surname" id="guestLastName" name="guestLastName" autocomplete="off" [(ngModel)]="searchGuest.lname">
+                <input style="max-width: 250px;" type="text" name="guestFirstName" class="form-control"
+                    placeholder="Name" id="guestFirstName" autocomplete="off" [(ngModel)]="searchGuest.fname">
+                <input (keyup.enter)="findGuest()" style="max-width: 250px;" type="text" class="form-control"
+                    placeholder="Surname" id="guestLastName" name="guestLastName" autocomplete="off"
+                    [(ngModel)]="searchGuest.lname">
                 <button class="btn btn-outline-secondary" type="button" (click)="findGuest()">
                     Find
                 </button>
@@ -28,8 +31,11 @@
 
         <div *ngIf="!desktop" class="d-flex justify-content-center mb-5 mt-3">
             <div class="text-center">
-                <input style="max-width: 250px;" type="text" name="guestFirstName" class="form-control mt-2" placeholder="Name" id="guestFirstName" autocomplete="off" [(ngModel)]="searchGuest.fname">
-                <input (keyup.enter)="findGuest()" style="max-width: 250px;" type="text" class="form-control mt-2" placeholder="Surname" id="guestLastName" name="guestLastName" autocomplete="off" [(ngModel)]="searchGuest.lname">
+                <input style="max-width: 250px;" type="text" name="guestFirstName" class="form-control mt-2"
+                    placeholder="Name" id="guestFirstName" autocomplete="off" [(ngModel)]="searchGuest.fname">
+                <input (keyup.enter)="findGuest()" style="max-width: 250px;" type="text" class="form-control mt-2"
+                    placeholder="Surname" id="guestLastName" name="guestLastName" autocomplete="off"
+                    [(ngModel)]="searchGuest.lname">
                 <button class="btn btn-outline-secondary mt-2" type="button" (click)="findGuest()">
                     Find
                 </button>
@@ -52,7 +58,7 @@
                 </div>
             </li>
         </ul>
-        <mat-vertical-stepper #stepper>
+        <mat-vertical-stepper #stepper [linear]="false">
             <mat-step [stepControl]="rsvpForm">
                 <form [formGroup]="rsvpForm">
                     <ng-template matStepLabel>Manage RSVP Status</ng-template>
@@ -70,27 +76,44 @@
                                 </div>
                                 <div>
                                     <div class="btn-group" style="min-width: 98px;" role="group">
-                                        <button (click)="rsvpGuest(guest.guestId, 'Coming')" [class.btn-danger]="guest.response === 'Pending'" [class.btn-outline-success]="guest.response !== 'Pending'" style="min-width: 53px;" type="button" [class.active]="guest.response === 'Coming'" class="btn">
+                                        <button (click)="rsvpGuest(guest.guestId, 'Coming')"
+                                            [class.btn-danger]="guest.response === 'Pending'"
+                                            [class.btn-outline-success]="guest.response !== 'Pending'"
+                                            style="min-width: 53px;" type="button"
+                                            [class.active]="guest.response === 'Coming'" class="btn">
                                             Yes
                                         </button>
-                                        <button (click)="rsvpGuest(guest.guestId, 'CantMakeIt')" [class.btn-danger]="guest.response === 'Pending'" style="min-width: 53px;" [class.btn-outline-success]="guest.response !== 'Pending'" type="button" [class.active]="guest.response === 'CantMakeIt'" class="btn">
+                                        <button (click)="rsvpGuest(guest.guestId, 'CantMakeIt')"
+                                            [class.btn-danger]="guest.response === 'Pending'" style="min-width: 53px;"
+                                            [class.btn-outline-success]="guest.response !== 'Pending'" type="button"
+                                            [class.active]="guest.response === 'CantMakeIt'" class="btn">
                                             No
                                         </button>
                                     </div>
                                 </div>
                             </li>
 
-                            <li *ngFor="let guestParty of guest.guestParties" class="d-flex justify-content-between list-group-item">
+                            <li *ngFor="let guestParty of guest.guestParties"
+                                class="d-flex justify-content-between list-group-item">
 
                                 <div class="mt-2">
                                     {{guestParty.fname}} {{guestParty.sname}}
                                 </div>
                                 <div>
                                     <div class="btn-group" style="min-width: 98px;" role="group">
-                                        <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'Coming')" [class.btn-danger]="guestParty.response === 'Pending'" [class.btn-outline-success]="guestParty.response !== 'Pending'" style="min-width: 53px;" type="button" [class.active]="guestParty.response === 'Coming'" class="btn">
+                                        <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'Coming')"
+                                            [class.btn-danger]="guestParty.response === 'Pending'"
+                                            [class.btn-outline-success]="guestParty.response !== 'Pending'"
+                                            style="min-width: 53px;" type="button"
+                                            [class.active]="guestParty.response === 'Coming'" class="btn">
                                             Yes
                                         </button>
-                                        <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'CantMakeIt')" [class.btn-danger]="guestParty.response === 'Pending'" style="min-width: 53px;" [class.btn-outline-success]="guestParty.response !== 'Pending'" type="button" [class.active]="guestParty.response === 'CantMakeIt'" class="btn">
+                                        <button (click)="rsvpGuestParty(guestParty.guestPartyId, 'CantMakeIt')"
+                                            [class.btn-danger]="guestParty.response === 'Pending'"
+                                            style="min-width: 53px;"
+                                            [class.btn-outline-success]="guestParty.response !== 'Pending'"
+                                            type="button" [class.active]="guestParty.response === 'CantMakeIt'"
+                                            class="btn">
                                             No
                                         </button>
                                     </div>
@@ -108,7 +131,8 @@
                     </div>
                     <div>
                         <div class="btn-group mt-4" role="group">
-                            <button type="button" class="btn btn-outline-secondary" matStepperNext>Next</button>
+                            <button type="button" class="btn btn-secondary"
+                                (click)="next('rsvp', stepper)">Next</button>
                         </div>
                     </div>
                 </form>
@@ -120,14 +144,16 @@
                         <ul class="list-group">
                             <li class="d-flex justify-content-between list-group-item">
                                 <div class="mt-2">
-                                    Song Suggestions
+
                                 </div>
 
-                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#suggestsong">Suggest Song</button>
+                                <button class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#suggestsong">Suggest A Song</button>
                             </li>
 
 
-                            <li class="d-flex justify-content-between list-group-item" *ngFor="let song of guest.songSuggestions">
+                            <li class="d-flex justify-content-between list-group-item"
+                                *ngFor="let song of guest.songSuggestions">
                                 <div>
                                     <mat-chip class="mb-2" color="primary" selected>{{song.title}}</mat-chip>
                                     <mat-chip-list class="mt-1">
@@ -146,16 +172,27 @@
                     </div>
                     <div>
                         <div class="btn-group mt-4" role="group">
-                            <button type="button" class="btn btn-outline-secondary " matStepperPrevious>Back</button>
-                            <button type="button" class="btn btn-outline-secondary" matStepperNext>Next</button>
+                            <button type="button" class="btn btn-secondary " matStepperPrevious>Back</button>
+                            <button type="button" class="btn btn-secondary"
+                                (click)="next('song-suggest', stepper)">Next</button>
                         </div>
                     </div>
                 </form>
             </mat-step>
             <mat-step>
                 <ng-template matStepLabel>Finished</ng-template>
+
+                <p class="mt-2">
+                    Thank you very much for taking the time to reply to our invitation.
+                </p>
+                <p class="mt-2">
+                    Your response has been submitted successfully and has been received.
+                </p>
+                <p>
+                    We can't wait to celebrate our big day!
+                </p>
                 <div>
-                    <button class="btn btn-outline-secondary mt-2" routerLink="/">Submit RSVP</button>
+                    <button class="btn btn-outline-secondary mt-2" routerLink="/">Return To Home</button>
                 </div>
             </mat-step>
         </mat-vertical-stepper>
@@ -171,12 +208,15 @@
                 <div class="modal-body">
                     <div class="d-flex justify-content-end">
                         <div class="input-group">
-                            <input (keyup.enter)="searchSongs(search.value)" #search value="" type="text" class="form-control" data-toggle="dropdown" placeholder="Artist Name/Song Title Search">
+                            <input (keyup.enter)="searchSongs(search.value)" #search value="" type="text"
+                                class="form-control" data-toggle="dropdown" placeholder="Artist Name/Song Title Search">
                             <div class="input-group-append">
-                                <button *ngIf="!songs || songs.length  < 1" (click)="searchSongs(search.value)" class="btn btn-outline-secondary" type="button">
+                                <button *ngIf="!songs || songs.length  < 1" (click)="searchSongs(search.value)"
+                                    class="btn btn-outline-secondary" type="button">
                                     <i class="bi bi-search"></i>
                                 </button>
-                                <button *ngIf="songs.length > 0" (click)="clearSongs(); search.value = ''" class="btn btn-outline-danger" type="button">
+                                <button *ngIf="songs.length > 0" (click)="clearSongs(); search.value = ''"
+                                    class="btn btn-outline-danger" type="button">
                                     <i class="bi bi-x"></i>
                                 </button>
                             </div>
@@ -185,7 +225,8 @@
                     </div>
 
                     <ul class="list-group">
-                        <li class="d-flex justify-content-between list-group-item pointer" (click)="suggestSong(song)" *ngFor="let song of songs">
+                        <li class="d-flex justify-content-between list-group-item pointer" (click)="suggestSong(song)"
+                            *ngFor="let song of songs">
                             <div class="pointer" (click)="suggestSong(song)">
                                 <mat-chip-list (click)="suggestSong(song)" class="mt-1 pointer">
                                     <mat-chip class="pointer" (click)="suggestSong(song)" color="primary" selected>
