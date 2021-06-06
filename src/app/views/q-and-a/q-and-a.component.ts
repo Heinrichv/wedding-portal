@@ -15,7 +15,7 @@ export class QAndAComponent implements OnInit {
     },
     {
       question: 'What is the dress code?',
-      answer: 'Semi-Formal to Formal',
+      answer: 'Semi-Formal to Formal (Collar And Tie)',
       id: 'two'
     },
     {
