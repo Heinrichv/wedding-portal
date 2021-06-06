@@ -20,7 +20,7 @@ export class QAndAComponent implements OnInit {
     },
     {
       question: 'Is it an outdoor wedding?',
-      answer: 'Our ceremony will be indoors following that will a pre-reception in the garden. \r\nFollowed by our reception which is indoors.',
+      answer: 'Our ceremony will be indoors flowing into a pre-reception in the garden, followed by our main reception which is indoors.',
       id: 'three'
     },
     {
@@ -36,7 +36,7 @@ export class QAndAComponent implements OnInit {
     {
       question: 'May I take photos during the ceremony & reception?',
       // tslint:disable-next-line:max-line-length
-      answer: 'We want to keep the ceremony "unplugged" and we have hired professional photographers to capture how this moment looks with their camera, so you can capture how it feels in your hearts. Please turn off your cellphones & cameras during the ceremony.\r\nFor photos taken after the ceremony, please use #foreverventer for posting on Social Media.',
+      answer: 'We want to keep the ceremony "unplugged" and we have hired professional photographers to capture how this moment looks with their camera, so you can capture how it feels in your heart. Please turn off your cellphones & cameras during the ceremony.\r\nFor photos taken after the ceremony, please use #foreverventer for posting on Social Media.',
       id: 'six'
     },
     {
