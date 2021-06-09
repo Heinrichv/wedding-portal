@@ -1,47 +1,63 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <title>Forever Venter</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+  <head>
+    <meta charset="utf-8">
+    <title>Forever Venter</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;family=Roboto&amp;display=swap"
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;family=Roboto&amp;display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#ffffff">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS7E777BE7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS7E777BE7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
 
-    gtag('config', 'G-CS7E777BE7');
-  </script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-</head>
+      gtag('config', 'G-CS7E777BE7');
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  </head>
 
-<body>
-  <app-root></app-root>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-    crossorigin="anonymous"></script>
-  <noscript>Please enable JavaScript to continue using this application.</noscript>
-</body>
+  <body>
+    <app-root></app-root>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCeZoUCWqCVDsKLu43zGkBQXmdKNFQPgZY",
+        authDomain: "foreverventer.firebaseapp.com",
+        projectId: "foreverventer",
+        storageBucket: "foreverventer.appspot.com",
+        messagingSenderId: "268761298151",
+        appId: "1:268761298151:web:93176d8d6b268edeccde42"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+  </body>
 
 </html>
